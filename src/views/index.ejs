@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoservicio de Hardware</title>
+    <title>Bienvenido - HardZone</title>
 </head>
 <body>
-    <h1>¡Bienvenido al Autoservicio!</h1>
-    <p>Plantilla EJS funcionando a la perfeccion.</p>
+    <%- include('./partials/header') %>
+
+    <main>
+        <h1>Bienvenido a nuestra terminal de autoservicio</h1>
+        <p>Por favor, ingresá tu nombre para poder ver los productos disponibles:</p>
+        
+        <form action="/productos" method="GET">
+            <input type="text" name="nombreCliente" placeholder="Ej. Juan Pérez" required>
+            <button type="submit">Continuar</button>
+        </form>
+    </main>
 </body>
 </html>
