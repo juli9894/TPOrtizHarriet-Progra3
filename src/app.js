@@ -1,11 +1,16 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-    res.send('¡Hola! El servidor del autoservicio de hardware está funcionando.');
-});
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, '../public')));
+
+const mainRoutes = require('./routes/mainRoutes')
+
+app.use('/', mainRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo sin problemas en http://localhost:${PORT}`);
