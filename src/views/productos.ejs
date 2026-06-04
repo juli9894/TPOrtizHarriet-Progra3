@@ -13,8 +13,15 @@
         <p>Explorá nuestro stock.</p>
         
         <ul>
-            <li>Auriculares HyperX Cloud 2 - (Ideal audio direccional)</li>
-            <li>Memoria RAM DDR5 32GB - (Máximo rendimiento)</li>
+            <% listaProductos.forEach(producto => { %>
+                <li style="margin-bottom: 15px;">
+                    <strong><%= producto.nombre %></strong> - $<%= producto.precio %>
+                    <br>
+                    <small><%= producto.descripcion %></small>
+                    <br>
+                    <button type="button">Agregar al carrito</button>
+                </li>
+            <% }) %>
         </ul>
     </main>
 </body>

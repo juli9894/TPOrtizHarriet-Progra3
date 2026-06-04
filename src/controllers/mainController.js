@@ -1,3 +1,9 @@
+const fs = require('fs');
+const path = require('path');
+
+const productosFilePath = path.join(__dirname, '../data/productos.json');
+const productos = JSON.parse(fs.readFileSync(productosFilePath, 'utf-8'));
+
 const mainController = {
 
     home: (req, res) => {
@@ -5,7 +11,9 @@ const mainController = {
     },
 
     productos: (req, res) => {
-        res.render('productos');
+        const productosActivos = productos.filter(producto => producto.activo === true);
+
+        res.render('productos', { listaProductos: productosActivos });
     },
 
     carrito: (req, res) => {
