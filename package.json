@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
+  "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js"
   },
@@ -21,7 +21,9 @@
   "homepage": "https://github.com/juli9894/TPOrtizHarriet-Progra3#readme",
   "dependencies": {
     "ejs": "^6.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
