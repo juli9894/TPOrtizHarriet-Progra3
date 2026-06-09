@@ -25,6 +25,10 @@ const Producto = sequelize.define('Producto', {
     },
     descripcion: {
         type: DataTypes.TEXT
+    },
+    imagen: {
+        type: DataTypes.STRING,
+        defaultValue: 'default.png'
     }
 }, {
     tableName: 'productos', 

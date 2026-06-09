@@ -12,11 +12,11 @@ const adminController = {
                 nombre: req.body.nombre,
                 precio: req.body.precio,
                 descripcion: req.body.descripcion,
-                categoria: "General" 
+                categoria: "General",
+                imagen: req.file ? req.file.filename : 'default.png'
             });
 
             res.redirect('/productos');
-
         } catch (error) {
             console.error(error);
             res.send('Error al guardar.');
@@ -62,21 +62,24 @@ const adminController = {
         try {
             const idProducto = req.params.id;
 
-            await Producto.update(
-                {
-                    nombre: req.body.nombre,
-                    precio: req.body.precio,
-                    descripcion: req.body.descripcion
-                },
-                {
-                    where: { id: idProducto } 
-                }
-            );
+            const datosActualizados = {
+                nombre: req.body.nombre,
+                precio: req.body.precio,
+                descripcion: req.body.descripcion
+            };
+
+            if (req.file) {
+                datosActualizados.imagen = req.file.filename;
+            }
+
+            await Producto.update(datosActualizados, {
+                where: { id: idProducto }
+            });
 
             res.redirect('/productos');
         } catch (error) {
             console.error('Error al actualizar:', error);
-            res.send('Ocurrió un error al guardar los cambios.');
+            res.send('Ocurrio un error al guardar los cambios.');
         }
     }
 };

@@ -11,8 +11,7 @@
     <main class="admin-container">
         <h1>Agregar Nuevo Producto</h1>
         
-        <form action="/admin/crear" method="POST" class="formulario-admin">
-            
+        <form action="/admin/crear" method="POST" class="formulario-admin" enctype="multipart/form-data">            
             <div class="campo-form">
                 <label for="nombre">Nombre del Producto:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -26,6 +25,11 @@
             <div class="campo-form campo-completo">
                 <label for="descripcion">Descripción del Producto:</label>
                 <textarea id="descripcion" name="descripcion" rows="4" placeholder="Escribí los detalles técnicos aquí..."></textarea>
+            </div>
+
+            <div class="campo-form campo-completo">
+                <label for="imagen">Imagen del Producto:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
             </div>
             
             <button type="submit">Guardar Producto</button>

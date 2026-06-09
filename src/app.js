@@ -17,36 +17,9 @@ app.use('/admin', adminRoutes);
 const sequelize = require('./database/connection');
 const Producto = require('./database/models/Producto');
 
-
-
 sequelize.sync()
-    .then(async () => {
-        console.log('¡Tabla de productos construida con éxito!');
-        
-        await Producto.bulkCreate([
-            {
-                nombre: "HyperX Cloud 2",
-                categoria: "Perifericos",
-                precio: 120000,
-                activo: true,
-                descripcion: "Auriculares con sonido envolvente 7.1, ideales para una detección acústica precisa."
-            },
-            {
-                nombre: "Router Telefónica Askey GPT-2741GNAC",
-                categoria: "Hardware",
-                precio: 45000,
-                activo: true,
-                descripcion: "Router dual band optimizado para abrir puertos y mejorar la conectividad."
-            },
-            {
-                nombre: "Memoria RAM DDR5 32GB",
-                categoria: "Hardware",
-                precio: 180000,
-                activo: false,
-                descripcion: "Módulo de alta velocidad. (Sin stock temporalmente)."
-            }
-        ]);
-        console.log('¡Artículos insertados correctamente en el depósito!');
+    .then(() => {
+        console.log('Base de datos sincronizada');
     })
     .catch(error => console.log('Error al sincronizar:', error));
 
