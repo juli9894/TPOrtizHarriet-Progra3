@@ -1,0 +1,79 @@
+/* Estilos generales del contenedor */
+.admin-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.admin-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.formulario-admin {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    background-color: #f4f4f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.campo-form {
+    display: grid;
+    gap: 8px;
+}
+
+.campo-form label {
+    font-weight: bold;
+    color: #555;
+}
+
+.campo-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.campo-form input, .campo-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Arial, sans-serif; 
+    resize: vertical; 
+}
+
+button {
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+@media (min-width: 768px) {
+    .formulario-admin {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .campo-completo {
+        grid-column: span 2;
+    }
+
+    button {
+        grid-column: span 2;/
+    }
+}

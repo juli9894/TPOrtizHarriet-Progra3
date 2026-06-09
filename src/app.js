@@ -7,14 +7,19 @@ const PORT = 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.urlencoded({ extended: false }));
 
 const mainRoutes = require('./routes/mainRoutes');
 app.use('/', mainRoutes);
+const adminRoutes = require('./routes/adminRoutes');
+app.use('/admin', adminRoutes);
 
 const sequelize = require('./database/connection');
 const Producto = require('./database/models/Producto');
 
-sequelize.sync({ force: true })
+
+
+sequelize.sync()
     .then(async () => {
         console.log('¡Tabla de productos construida con éxito!');
         
