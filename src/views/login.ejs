@@ -3,20 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Panel Administrativo</title>
+    <title>Ingresar - Panel Administrativo</title>
     <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
     
     <main class="admin-container" style="max-width: 500px;">
-        <h1>Crear Cuenta de Administrador</h1>
+        <h1>Iniciar Sesión</h1>
         
-        <form action="/registro" method="POST" class="formulario-admin">
-            
-            <div class="campo-form campo-completo">
-                <label for="nombre">Nombre Completo:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
+        <form action="/login" method="POST" class="formulario-admin">
 
             <div class="campo-form campo-completo">
                 <label for="email">Correo:</label>
@@ -28,12 +23,12 @@
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit" style="background-color: #28a745;">Registrarse</button>
+            <button type="submit" style="background-color: #007bff;">Ingresar</button>
 
         </form>
 
         <p style="text-align: center; margin-top: 20px;">
-            ¿Ya tenes cuenta? <a href="/login" style="color: #007bff; text-decoration: none; font-weight: bold;">Ingresa aca</a>
+            ¿No tenés cuenta? <a href="/registro" style="color: #007bff; text-decoration: none; font-weight: bold;">Registrate</a>
         </p>
     </main>
 
