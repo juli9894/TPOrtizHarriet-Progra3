@@ -268,8 +268,11 @@ button {
     width: 100%;
     cursor: pointer;
 }
-
 @media (max-width: 768px) {
+
+    body {
+        padding-top: 140px;
+    }
 
     #segundaBarra {
         flex-direction: column;
@@ -278,31 +281,21 @@ button {
         gap: 10px;
     }
 
-    #segundaBarra h2 {
-        margin: 0;
-    }
-
     .container {
-        max-width: 100px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .form {
-        gap: 20px;
+        width: 100%;
+        max-width: 100%;
         padding: 10px;
+        box-sizing: border-box;
     }
 
     .form {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        padding: 15px;
     }
 
-    .campo-completo {
-        grid-column: span 2;
-    }
-
-    button {
-        grid-column: span 2;/
+    .campo-form img {
+        max-width: 100%;
+        height: auto;
     }
 
     .categories {
