@@ -7,7 +7,9 @@ const userController = {
     },
 
     registro: (req, res) => {
-        res.render('registro');
+        res.render("registro", {
+            mensaje: ""
+        });
     },
 
     procesarRegistro: async (req, res) => {
@@ -24,7 +26,9 @@ const userController = {
 
         } catch (error) {
             console.error('Error al registrar usuario:', error);
-            res.send('Hubo un error al intentar crear la cuenta.');
+            res.render("registro", {
+                mensaje: "La cuenta ya existe."
+            });
         }
     }
 };

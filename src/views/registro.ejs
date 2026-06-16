@@ -31,6 +31,9 @@
 
             <div class="campo-form campo-completo">
                 <button type="submit" style="background-color: #28a745;">Registrarse</button>
+                <% if (mensaje) { %>
+                    <label  style="text-align: center; color: red;"><%= mensaje %></label>
+                <% } %>
             </div>
             
         </form>
