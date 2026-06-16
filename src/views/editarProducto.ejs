@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración - Editar Producto</title>
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    
-    <main class="admin-container">
+    <%- include('./partials/header', { mostrarNav: true }) %>
+    <main class="container">
         <h1>Modificar Producto: <%= producto.nombre %></h1>
         
-        <form action="/admin/editar/<%= producto.id %>" method="POST" class="formulario-admin" enctype="multipart/form-data">
+        <form action="/admin/editar/<%= producto.id %>" method="POST" class="form" enctype="multipart/form-data">
             
             <div class="campo-form">
                 <label for="nombre">Nombre del Producto:</label>
@@ -40,6 +40,6 @@
 
         </form>
     </main>
-
+    <%- include('./partials/footer') %>
 </body>
 </html>
