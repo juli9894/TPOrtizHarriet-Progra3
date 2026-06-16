@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Catálogo de Componentes</title>
+</head>
+<body>
+    <%- include('./partials/header', { mostrarNav: true, admin: false }) %>
+    <h1>Catálogo de Productos</h1>
+    
+    <div class="catalogo-container">
+        <% if (listaProductos && listaProductos.length > 0) { %>
+            
+            <% listaProductos.forEach(producto => { %>
+                <div class="producto-card">
+                    <img src="/img/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>" style="
+                        display: block;
+                        width: 40%;
+                        height: 40%;
+                        object-fit: cover;
+                        border-radius: 5px;
+                        margin: 0 auto 15px auto;">
+                    <h3><%= producto.nombre %></h3>
+                    <p class="precio">$ <%= producto.precio %></p>
+                    <p class="descripcion"><%= producto.descripcion %></p>
+                    <a href="/admin/editar/<%= producto.id %>" style="display: block; text-align: center; text-decoration: none; background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 10px;">
+                        ✏️ Editar Producto
+                    </a>
+                    <form action="/admin/eliminar/<%= producto.id %>" method="POST">
+                        <button type="submit" style="background-color: #dc3545; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;" onclick="return confirm('¿Seguro que querés eliminar este producto definitivamente?')">
+                            🗑️ Eliminar Producto
+                        </button>
+                    </form>
+                </div>
+            <% }) %>
+
+        <% } else { %>
+            <div style="text-align: center; grid-column: 1 / -1; padding: 40px;">
+                <h2>No hay perifericos disponibles en este momento.</h2>
+            </div>
+        <% } %>
+    </div>
+    <%- include('./partials/footer') %>
+</body>
+</html>

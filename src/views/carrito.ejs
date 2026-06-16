@@ -8,7 +8,6 @@
 </head>
 <body>
     <%- include('./partials/header', { mostrarNav: true }) %>
-
     <main class="container" style="max-width: 500px;">
         <h1>Tu Carrito de Compras</h1>
         <p>Revisá y modificá tu pedido antes de finalizar la compra.</p>
@@ -18,14 +17,13 @@
             <p>Precio Unitario: $100</p>
             <p>
                 Cantidad: 
-                <button type="button">-</button> 
+                <button type="button" style="background-color: #007bff; color: white;">-</button> 
                 <span>1</span> 
-                <button type="button">+</button>
+                <button type="button" style="background-color: #007bff; color: white;">+</button>
             </p>
             <div class="campo-form campo-completo">
-                <button type="button" style="color: red;">Eliminar del carrito</button>
+                <button type="button" style="color: #666; background-color:#ddd;">Eliminar del carrito</button>
             </div>
-           
         </div>
 
         <div class="campo-form campo-completo">
@@ -33,7 +31,6 @@
         </div>
         
     </main>
-
     <%- include('./partials/footer') %>
 </body>
 </html>

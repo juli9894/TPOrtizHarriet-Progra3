@@ -8,12 +8,10 @@
 </head>
 <body>
     <%- include('./partials/header', { mostrarNav: false }) %>
-
     <main class="container" style="max-width: 500px;">
         <h1>Crear Cuenta de Administrador</h1>
         
         <form action="/registro" method="POST" class="form">
-            
             <div class="campo-form campo-completo">
                 <label for="nombre">Nombre Completo:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -35,14 +33,12 @@
                     <label  style="text-align: center; color: red;"><%= mensaje %></label>
                 <% } %>
             </div>
-            
         </form>
 
         <p style="text-align: center; margin-top: 20px;">
             ¿Ya tenes cuenta? <a href="/login" style="color: #007bff; text-decoration: none; font-weight: bold;">Ingresa aca</a>
         </p>
     </main>
-
     <%- include('./partials/footer') %>
 </body>
 </html>

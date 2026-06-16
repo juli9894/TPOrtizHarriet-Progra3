@@ -1,26 +1,38 @@
 [
-  {
-    "id": 1,
-    "nombre": "HyperX Cloud 2",
-    "categoria": "Perifericos",
-    "precio": 120000,
-    "activo": true,
-    "descripcion": "Auriculares con sonido envolvente 7.1, ideales para una detección acústica precisa."
-  },
-  {
-    "id": 2,
-    "nombre": "Router Telefónica Askey GPT-2741GNAC",
-    "categoria": "Hardware",
-    "precio": 45000,
-    "activo": true,
-    "descripcion": "Router dual band optimizado para abrir puertos y mejorar la conectividad."
-  },
-  {
-    "id": 3,
-    "nombre": "Memoria RAM DDR5 32GB",
-    "categoria": "Hardware",
-    "precio": 180000,
-    "activo": false,
-    "descripcion": "Módulo de alta velocidad. (Sin stock temporalmente)."
-  }
+    {
+        "id": 1,
+        "nombre": "Teclado Redragon Mitra K551",
+        "categoria": "Periferico",
+        "precio": 55000,
+        "activo": true,
+        "descripcion": "Teclado ReDragon Mitra K551 Mechanical Retroiluminado RGB Español Negro",
+        "imagen": "compragamer_Imganen_general_8875_Teclado_Redragon_Mitra_K551_Mechanical_Retroiluminado_RGB_Espa__ol__7cb0f5e1-med.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Procesador AMD Athlon 3000G",
+        "categoria": "Componente",
+        "precio": 120000,
+        "activo": true,
+        "descripcion": "Procesador AMD Athlon 3000G 3.5Ghz Radeon Vega 3 AM4",
+        "imagen": "compragamer_Imganen_general_16481_Procesador_AMD_Athlon_3000G_3.5GHz___Radeon_Vega_3_AM4_8a762b5b-med.jpg" 
+    },
+    {
+        "id": 3,
+        "nombre": "Monitor Gamer ASUS TUF VG279Q3A-J",
+        "categoria": "Periferico",
+        "precio": 250000,
+        "activo": true,
+        "descripcion": "Monitor_Gamer ASUS TUF VG279Q3A-J 27 FHD IPS 180Hz Freesync Premium G-SYNC Compatible",
+        "imagen": "compragamer_Imganen_general_49227_Monitor_Gamer_ASUS_TUF_VG279Q3A-J_27__FHD_IPS_180Hz_Freesync_Premium_G-SYNC_Compatible_9bd61bf7-med.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Procesador AMD Ryzen 3 3200G",
+        "categoria": "Componente",
+        "precio": 200000,
+        "activo": true,
+        "descripcion": "Procesador AMD Ryzen 3 3200G 4.0GHz Turbo Radeon Vega 8 AM4 Wraith Stealth Cooler",
+        "imagen": "compragamer_Imganen_general_16752_Procesador_AMD_Ryzen_3_3200G_4.0GHz_Turbo___Radeon_Vega_8_AM4___Wraith_Stealth_Cooler_f414a507-med.jpg"
+    }
 ]
