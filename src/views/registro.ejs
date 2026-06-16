@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Registro - Panel Administrativo</title>
-    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    
-    <main class="admin-container" style="max-width: 500px;">
+    <%- include('./partials/header', { mostrarNav: false }) %>
+
+    <main class="container" style="max-width: 500px;">
         <h1>Crear Cuenta de Administrador</h1>
         
-        <form action="/registro" method="POST" class="formulario-admin">
+        <form action="/registro" method="POST" class="form">
             
             <div class="campo-form campo-completo">
                 <label for="nombre">Nombre Completo:</label>
@@ -28,8 +29,10 @@
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit" style="background-color: #28a745;">Registrarse</button>
-
+            <div class="campo-form campo-completo">
+                <button type="submit" style="background-color: #28a745;">Registrarse</button>
+            </div>
+            
         </form>
 
         <p style="text-align: center; margin-top: 20px;">
@@ -37,5 +40,6 @@
         </p>
     </main>
 
+    <%- include('./partials/footer') %>
 </body>
 </html>

@@ -1,13 +1,17 @@
 <header>
-    <div>
-        <h2>💻 HardZone Autoservicio</h2>
-        <p><small>Desarrollado por: Juli y Mauricio</small></p>
+    <div class="barra" id="primeraBarra">
+        <p>Los mejores precios en todo el país</p>
     </div>
     
-    <nav>
-        <a href="/">Inicio</a> | 
-        <a href="/productos">Catálogo de Productos</a> | 
-        <a href="/carrito">Mi Carrito</a>
-    </nav>
-    <hr>
+    <div class="barra" id="segundaBarra">
+        <a href="/" class="logo">
+            <h2 class="logo">💻 HardZone Autoservicio</h2>
+        </a>
+        <% if (mostrarNav) { %>
+            <nav>
+                <a href="/categorias">Categorias</a>
+                <a href="/carrito">Carrito</a>
+            </nav>
+        <% } %>
+    </div>
 </header>

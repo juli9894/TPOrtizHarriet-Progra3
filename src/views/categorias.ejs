@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Categorias - HardZone</title>
+</head>
+<body>
+    <%- include('./partials/header', { mostrarNav: true }) %>
+    
+    <main class="categories">
+
+        <div>
+            <a href="/productos" class="item"> <!-- cambiar obviamente --> 
+                <img src="/img/000000000041384749375413847--1-.png" alt="Componentes">
+                <span>Componentes</span>
+            </a>
+        </div>
+
+        <div>
+            <a href="/productos" class="item"> <!-- cambiar obviamente --> 
+                <img src="/img/7800x-3d-5070ti-14.png" alt="Periféricos">
+                <span>Periféricos</span>
+            </a>
+        </div>
+
+
+    </main>
+
+    <%- include('./partials/footer') %>
+</body>
+</html>

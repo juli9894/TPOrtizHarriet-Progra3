@@ -3,19 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido - HardZone</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Login - HardZone</title>
 </head>
 <body>
-    <%- include('./partials/header') %>
+    <%- include('./partials/header', { mostrarNav: false }) %>
 
-    <main>
-        <h1>Bienvenido a nuestra terminal de autoservicio</h1>
-        <p>Por favor, ingresá tu nombre para poder ver los productos disponibles:</p>
-        
-        <form action="/productos" method="GET">
-            <input type="text" name="nombreCliente" placeholder="Ej. Juan Pérez" required>
-            <button type="submit">Continuar</button>
-        </form>
+    <main class="container" style="max-width: 500px;">
+            <h1>Bienvenido a nuestra terminal de autoservicio</h1>
+
+            <form action="/categorias" method="GET" class="form">
+
+                <div class="campo-form campo-completo">
+                    <label for="nombre">Por favor, ingresá tu nombre para poder ver los productos disponibles:</label>
+                    <input type="text" id="nombre" name="nombre" name="nombreCliente" placeholder="Ej. Juan Pérez" required>
+                </div>
+
+                <div class="campo-form campo-completo">
+                    <button type="submit" style="background-color: #007bff">Continuar</button>
+                </div>
+                
+            </form>
+
+        <p style="text-align: center; margin-top: 20px;">
+            Si sos un administrador, <a href="/login" style="color: #007bff; text-decoration: none; font-weight: bold;">iniciá sesión aquí</a>
+        </p>
     </main>
+
+    <%- include('./partials/footer') %>
 </body>
 </html>

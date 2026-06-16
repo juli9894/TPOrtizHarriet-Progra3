@@ -4,6 +4,18 @@ const mainController = {
     home: (req, res) => {
         res.render('index');
     },
+    categorias: (req, res)=>{
+        res.render("categorias");
+    },
+
+    // Recordatorio: Actualizar componentes y perifericos con la logica de productos. 
+
+    componentes: (req, res)=>{
+        res.render("componentes");
+    },
+    perifericos: (req, res)=>{
+        res.render("perifericos");
+    },
     
     productos: async (req, res) => {
         try {
