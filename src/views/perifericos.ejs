@@ -8,31 +8,33 @@
 </head>
 <body>
     <%- include('./partials/header', { mostrarNav: true, admin: false }) %>
-    <h1>Catálogo de Productos</h1>
+        <h1 style="text-align: center;">Catálogo de Perifericos</h1>
     
     <div class="catalogo-container">
         <% if (listaProductos && listaProductos.length > 0) { %>
             
             <% listaProductos.forEach(producto => { %>
                 <div class="producto-card">
-                    <img src="/img/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>" style="
-                        display: block;
-                        width: 40%;
-                        height: 40%;
-                        object-fit: cover;
-                        border-radius: 5px;
-                        margin: 0 auto 15px auto;">
+                    <img src="/img/productos/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>">
                     <h3><%= producto.nombre %></h3>
                     <p class="precio">$ <%= producto.precio %></p>
                     <p class="descripcion"><%= producto.descripcion %></p>
-                    <a href="/admin/editar/<%= producto.id %>" style="display: block; text-align: center; text-decoration: none; background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 10px;">
+
+                    <button type="submit" class="btn-comprar">
+                        🛒 Agregar al carrito
+                    </button>
+                    <!-- PARTE ADMINISTRATIVA, FALTA HACER QUE ANDE CORRECTAMENTE
+                    <a href="/admin/editar/<%= producto.id %>" class="btn-editar">
                         ✏️ Editar Producto
                     </a>
+
                     <form action="/admin/eliminar/<%= producto.id %>" method="POST">
-                        <button type="submit" style="background-color: #dc3545; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;" onclick="return confirm('¿Seguro que querés eliminar este producto definitivamente?')">
+                        <button type="submit" class="btn-eliminar"
+                            onclick="return confirm('¿Seguro que querés eliminar este producto definitivamente?')">
                             🗑️ Eliminar Producto
                         </button>
                     </form>
+                    -->
                 </div>
             <% }) %>
 
