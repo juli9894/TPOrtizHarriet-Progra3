@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Registro - Panel Administrativo</title>
-    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    
-    <main class="admin-container" style="max-width: 500px;">
+    <%- include('./partials/header', { mostrarNav: false }) %>
+    <main class="container" style="max-width: 500px;">
         <h1>Crear Cuenta de Administrador</h1>
         
-        <form action="/registro" method="POST" class="formulario-admin">
-            
+        <form action="/registro" method="POST" class="form">
             <div class="campo-form campo-completo">
                 <label for="nombre">Nombre Completo:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -28,14 +27,18 @@
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit" style="background-color: #28a745;">Registrarse</button>
-
+            <div class="campo-form campo-completo">
+                <button type="submit" style="background-color: #28a745;">Registrarse</button>
+                <% if (mensaje) { %>
+                    <label  style="text-align: center; color: red;"><%= mensaje %></label>
+                <% } %>
+            </div>
         </form>
 
         <p style="text-align: center; margin-top: 20px;">
             ¿Ya tenes cuenta? <a href="/login" style="color: #007bff; text-decoration: none; font-weight: bold;">Ingresa aca</a>
         </p>
     </main>
-
+    <%- include('./partials/footer') %>
 </body>
 </html>

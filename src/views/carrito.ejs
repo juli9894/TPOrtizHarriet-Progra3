@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Mi Carrito - HardZone</title>
 </head>
 <body>
-    <%- include('./partials/header') %>
-
-    <main>
+    <%- include('./partials/header', { mostrarNav: true }) %>
+    <main class="container" style="max-width: 500px;">
         <h1>Tu Carrito de Compras</h1>
         <p>Revisá y modificá tu pedido antes de finalizar la compra.</p>
 
-        <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; max-width: 400px;">
+        <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; max-width: 500px;">
             <h3>Auriculares HyperX Cloud 2</h3>
             <p>Precio Unitario: $100</p>
             <p>
                 Cantidad: 
-                <button type="button">-</button> 
+                <button type="button" style="background-color: #007bff; color: white;">-</button> 
                 <span>1</span> 
-                <button type="button">+</button>
+                <button type="button" style="background-color: #007bff; color: white;">+</button>
             </p>
-            <button type="button" style="color: red;">Eliminar del carrito</button>
+            <div class="campo-form campo-completo">
+                <button type="button" style="color: #666; background-color:#ddd;">Eliminar del carrito</button>
+            </div>
         </div>
 
-        <button type="button">Confirmar Compra</button>
+        <div class="campo-form campo-completo">
+            <button type="button">Confirmar Compra</button>
+        </div>
+        
     </main>
+    <%- include('./partials/footer') %>
 </body>
 </html>

@@ -1,26 +1,137 @@
 [
-  {
-    "id": 1,
-    "nombre": "HyperX Cloud 2",
-    "categoria": "Perifericos",
-    "precio": 120000,
-    "activo": true,
-    "descripcion": "Auriculares con sonido envolvente 7.1, ideales para una detección acústica precisa."
-  },
-  {
-    "id": 2,
-    "nombre": "Router Telefónica Askey GPT-2741GNAC",
-    "categoria": "Hardware",
-    "precio": 45000,
-    "activo": true,
-    "descripcion": "Router dual band optimizado para abrir puertos y mejorar la conectividad."
-  },
-  {
-    "id": 3,
-    "nombre": "Memoria RAM DDR5 32GB",
-    "categoria": "Hardware",
-    "precio": 180000,
-    "activo": false,
-    "descripcion": "Módulo de alta velocidad. (Sin stock temporalmente)."
-  }
+    {
+        "id": 1,
+        "nombre": "Teclado Redragon Mitra K551",
+        "categoria": "Periferico",
+        "precio": 55000,
+        "activo": true,
+        "descripcion": "Teclado ReDragon Mitra K551 Mechanical Retroiluminado RGB Español Negro",
+        "imagen": "compragamer_Imganen_general_8875_Teclado_Redragon_Mitra_K551_Mechanical_Retroiluminado_RGB_Espa__ol__7cb0f5e1-med.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Procesador AMD Athlon 3000G",
+        "categoria": "Componente",
+        "precio": 120000,
+        "activo": true,
+        "descripcion": "Procesador AMD Athlon 3000G 3.5Ghz Radeon Vega 3 AM4",
+        "imagen": "compragamer_Imganen_general_16481_Procesador_AMD_Athlon_3000G_3.5GHz___Radeon_Vega_3_AM4_8a762b5b-med.jpg" 
+    },
+    {
+        "id": 3,
+        "nombre": "Monitor Gamer ASUS TUF VG279Q3A-J",
+        "categoria": "Periferico",
+        "precio": 250000,
+        "activo": true,
+        "descripcion": "Monitor_Gamer ASUS TUF VG279Q3A-J 27 FHD IPS 180Hz Freesync Premium G-SYNC Compatible",
+        "imagen": "compragamer_Imganen_general_49227_Monitor_Gamer_ASUS_TUF_VG279Q3A-J_27__FHD_IPS_180Hz_Freesync_Premium_G-SYNC_Compatible_9bd61bf7-med.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Procesador AMD Ryzen 3 3200G",
+        "categoria": "Componente",
+        "precio": 200000,
+        "activo": true,
+        "descripcion": "Procesador AMD Ryzen 3 3200G 4.0GHz Turbo Radeon Vega 8 AM4 Wraith Stealth Cooler",
+        "imagen": "compragamer_Imganen_general_16752_Procesador_AMD_Ryzen_3_3200G_4.0GHz_Turbo___Radeon_Vega_8_AM4___Wraith_Stealth_Cooler_f414a507-med.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Mouse Logitech G203 Lightsync",
+        "categoria": "Periferico",
+        "precio": 35000,
+        "activo": true,
+        "descripcion": "Mouse Gamer Logitech G203 Lightsync RGB 8000 DPI Negro",
+        "imagen": "mouse_logitech_g203_lightsync.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Memoria RAM Kingston Fury Beast 16GB",
+        "categoria": "Componente",
+        "precio": 85000,
+        "activo": true,
+        "descripcion": "Memoria RAM Kingston Fury Beast DDR4 16GB 3200MHz",
+        "imagen": "kingston_fury_beast_16gb.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Disco SSD Kingston NV2 1TB",
+        "categoria": "Componente",
+        "precio": 95000,
+        "activo": true,
+        "descripcion": "SSD M.2 NVMe Kingston NV2 1TB PCIe 4.0",
+        "imagen": "kingston_nv2_1tb.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Gabinete DeepCool CC560",
+        "categoria": "Componente",
+        "precio": 110000,
+        "activo": true,
+        "descripcion": "Gabinete DeepCool CC560 Mid Tower con 4 ventiladores ARGB",
+        "imagen": "deepcool_cc560.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Auriculares HyperX Cloud Stinger 2",
+        "categoria": "Periferico",
+        "precio": 78000,
+        "activo": true,
+        "descripcion": "Auriculares Gamer HyperX Cloud Stinger 2 con micrófono",
+        "imagen": "hyperx_cloud_stinger_2.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "Fuente Corsair CV650",
+        "categoria": "Componente",
+        "precio": 125000,
+        "activo": true,
+        "descripcion": "Fuente de alimentación Corsair CV650 650W 80 Plus Bronze",
+        "imagen": "corsair_cv650.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "Placa de Video NVIDIA RTX 4060",
+        "categoria": "Componente",
+        "precio": 650000,
+        "activo": true,
+        "descripcion": "Placa de Video NVIDIA GeForce RTX 4060 8GB GDDR6",
+        "imagen": "rtx_4060.jpg"
+    },
+    {
+        "id": 12,
+        "nombre": "Monitor Samsung Odyssey G3",
+        "categoria": "Periferico",
+        "precio": 290000,
+        "activo": true,
+        "descripcion": "Monitor Gamer Samsung Odyssey G3 24 Full HD 144Hz",
+        "imagen": "samsung_odyssey_g3.jpg"
+    },
+    {
+        "id": 13,
+        "nombre": "Motherboard ASUS Prime B550M-A",
+        "categoria": "Componente",
+        "precio": 180000,
+        "activo": true,
+        "descripcion": "Motherboard ASUS Prime B550M-A AM4 DDR4",
+        "imagen": "asus_prime_b550m_a.jpg"
+    },
+    {
+        "id": 14,
+        "nombre": "Webcam Logitech C920",
+        "categoria": "Periferico",
+        "precio": 105000,
+        "activo": true,
+        "descripcion": "Webcam Logitech C920 Full HD 1080p con micrófono integrado",
+        "imagen": "logitech_c920.jpg"
+    },
+    {
+        "id": 15,
+        "nombre": "Procesador AMD Ryzen 5 5600",
+        "categoria": "Componente",
+        "precio": 240000,
+        "activo": true,
+        "descripcion": "Procesador AMD Ryzen 5 5600 6 núcleos 12 hilos AM4",
+        "imagen": "amd_ryzen_5_5600.jpg"
+    }
 ]

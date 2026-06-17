@@ -4,16 +4,33 @@ const mainController = {
     home: (req, res) => {
         res.render('index');
     },
-    
-    productos: async (req, res) => {
+    categorias: (req, res)=>{
+        res.render("categorias");
+    },
+
+    perifericos: async (req, res) => {
         try {
             const productosActivos = await Producto.findAll({
                 where: {
+                    categoria: "Periferico",
                     activo: true
                 }
             });
-            
-            res.render('productos', { listaProductos: productosActivos });
+            res.render('perifericos', { listaProductos: productosActivos });
+        } catch (error) {
+            console.error('Error al buscar en la base de datos:', error);
+        }
+    },
+
+    componentes: async (req, res) => {
+        try {
+            const productosActivos = await Producto.findAll({
+                where: {
+                    categoria: "Componente",
+                    activo: true
+                }
+            });
+            res.render('componentes', { listaProductos: productosActivos });
         } catch (error) {
             console.error('Error al buscar en la base de datos:', error);
             res.send('Ocurrió un error al cargar el catálogo.');
