@@ -9,7 +9,13 @@
 <body>
     <%- include('./partials/header', { mostrarNav: true, admin: false }) %>
         <h1 style="text-align: center;">Catálogo de Perifericos</h1>
-    
+        <% if(usuario){ %>
+            <div class="contenedor-boton">
+                <a href="/admin/crearProducto" class="btn-editar">
+                    Añadir producto
+                </a>
+            </div>
+        <% } %>
     <div class="catalogo-container">
         <% if (listaProductos && listaProductos.length > 0) { %>
             
@@ -23,18 +29,19 @@
                     <button type="submit" class="btn-comprar">
                         🛒 Agregar al carrito
                     </button>
-                    <!-- PARTE ADMINISTRATIVA, FALTA HACER QUE ANDE CORRECTAMENTE
-                    <a href="/admin/editar/<%= producto.id %>" class="btn-editar">
-                        ✏️ Editar Producto
-                    </a>
+                    <% if(usuario){ %>
 
-                    <form action="/admin/eliminar/<%= producto.id %>" method="POST">
-                        <button type="submit" class="btn-eliminar"
-                            onclick="return confirm('¿Seguro que querés eliminar este producto definitivamente?')">
-                            🗑️ Eliminar Producto
-                        </button>
-                    </form>
-                    -->
+                        <a href="/admin/editar/<%= producto.id %>" class="btn-editar">
+                            ✏️ Editar Producto
+                        </a>
+
+                        <form action="/admin/eliminar/<%= producto.id %>" method="POST">
+                            <button type="submit" class="btn-eliminar"
+                                onclick="return confirm('¿Seguro que querés eliminar este producto definitivamente?')">
+                                🗑️ Eliminar Producto
+                            </button>
+                        </form>
+                    <% } %>
                 </div>
             <% }) %>
 

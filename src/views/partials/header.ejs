@@ -11,6 +11,9 @@
             <nav>
                 <a href="/categorias">Categorias</a>
                 <a href="/carrito">Carrito</a>
+                <% if(usuario){ %>
+                    <a href="/logout">Cerrar sesión</a>
+                <% } %>
             </nav>
         <% } %>
     </div>

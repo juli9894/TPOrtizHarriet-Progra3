@@ -3,7 +3,6 @@ body{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     padding-top: 98px;
 }
 
@@ -268,6 +267,12 @@ button {
     width: 100%;
     cursor: pointer;
 }
+
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
 
     body {

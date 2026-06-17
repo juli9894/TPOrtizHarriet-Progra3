@@ -2,7 +2,7 @@ const Producto = require('../database/models/Producto');
 
 const adminController = {
 
-    crear: (req, res) => {
+    crearProducto: (req, res) => {
         res.render('crearProducto'); 
     },
     
@@ -12,11 +12,10 @@ const adminController = {
                 nombre: req.body.nombre,
                 precio: req.body.precio,
                 descripcion: req.body.descripcion,
-                categoria: "General",
+                categoria: req.body.categoria,
                 imagen: req.file ? req.file.filename : 'default.png'
             });
-
-            res.redirect('/productos');
+            res.redirect("/categorias");
         } catch (error) {
             console.error(error);
             res.send('Error al guardar.');
@@ -32,8 +31,7 @@ const adminController = {
                     id: idABorrar
                 }
             });
-
-            res.redirect('/productos');
+            res.redirect("/categorias");
 
         } catch (error) {
             console.error('Error al eliminar el producto:', error);
@@ -75,8 +73,7 @@ const adminController = {
             await Producto.update(datosActualizados, {
                 where: { id: idProducto }
             });
-
-            res.redirect('/productos');
+            res.redirect("/categorias");
         } catch (error) {
             console.error('Error al actualizar:', error);
             res.send('Ocurrio un error al guardar los cambios.');
