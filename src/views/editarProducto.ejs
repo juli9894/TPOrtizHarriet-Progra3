@@ -12,7 +12,7 @@
         <h1>Modificar Producto: <%= producto.nombre %></h1>
         
         <form action="/admin/editar/<%= producto.id %>" method="POST" class="form" enctype="multipart/form-data">
-            
+
             <div class="campo-form">
                 <label for="nombre">Nombre del Producto:</label>
                 <input type="text" id="nombre" name="nombre" value="<%= producto.nombre %>" required>

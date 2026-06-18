@@ -9,18 +9,23 @@
 <body>
     <%- include("./partials/header", { mostrarNav: true, admin: false }) %>
         <h1 style="text-align: center;">Catálogo de Componentes</h1>
+
         <% if(usuario){ %>
+
             <div class="contenedor-boton">
                 <a href="/admin/crearProducto" class="btn-editar">
                     Añadir producto
                 </a>
             </div>
+
         <% } %>
+
     <div class="catalogo-container">
         <% if (listaProductos && listaProductos.length > 0) { %>
             
             <% listaProductos.forEach(producto => { %>
                 <div class="producto-card">
+
                     <img src="/img/productos/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>">
                     <h3><%= producto.nombre %></h3>
                     <p class="precio">$ <%= producto.precio %></p>
@@ -29,8 +34,8 @@
                     <button type="button" class="btn-comprar" onclick="agregarAlCarrito('<%= producto.id %>', '<%= producto.nombre %>', '<%= producto.precio %>')">
                         🛒 Agregar al carrito
                     </button>
-                    <% if(usuario){ %>
 
+                    <% if(usuario){ %>
                         <a href="/admin/editar/<%= producto.id %>" class="btn-editar">
                             ✏️ Editar Producto
                         </a>
@@ -42,6 +47,7 @@
                             </button>
                         </form>
                     <% } %>
+
                 </div>
             <% }) %>
 
@@ -50,6 +56,7 @@
                 <h2>No hay perifericos disponibles en este momento.</h2>
             </div>
         <% } %>
+        
     </div>
     <%- include("./partials/footer") %>
 </body>
