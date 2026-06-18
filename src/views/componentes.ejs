@@ -10,17 +10,7 @@
     <%- include("./partials/header", { mostrarNav: true, admin: false }) %>
         <h1 style="text-align: center;">Catálogo de Componentes</h1>
 
-        <% if(usuario){ %>
-
-            <div class="contenedor-boton">
-                <a href="/admin/crearProducto" class="btn-editar">
-                    Añadir producto
-                </a>
-            </div>
-
-        <% } %>
-
-    <div class="catalogo-container">
+        <div class="catalogo-container">
         <% if (listaProductos && listaProductos.length > 0) { %>
             
             <% listaProductos.forEach(producto => { %>
@@ -35,19 +25,6 @@
                         🛒 Agregar al carrito
                     </button>
 
-                    <% if(usuario){ %>
-                        <a href="/admin/editar/<%= producto.id %>" class="btn-editar">
-                            ✏️ Editar Producto
-                        </a>
-
-                        <form action="/admin/eliminar/<%= producto.id %>" method="POST">
-                            <button type="submit" class="btn-eliminar"
-                                onclick="return confirm('¿Seguro que querés eliminar este producto definitivamente?')">
-                                🗑️ Eliminar Producto
-                            </button>
-                        </form>
-                    <% } %>
-
                 </div>
             <% }) %>
 
@@ -56,7 +33,7 @@
                 <h2>No hay perifericos disponibles en este momento.</h2>
             </div>
         <% } %>
-        
+
     </div>
     <%- include("./partials/footer") %>
 </body>

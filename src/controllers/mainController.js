@@ -5,7 +5,7 @@ const mainController = {
     home: (req, res) => {
         res.render("index");
     },
-    
+
     categorias: (req, res)=>{
         res.render("categorias");
     },

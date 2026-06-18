@@ -240,6 +240,7 @@ button {
 }
 
 .btn-editar,
+.btn-opcion,
 .btn-eliminar {
     display: block;
     text-align: center;
@@ -253,7 +254,13 @@ button {
     background: #28a745;
     color: white;
 }
-
+.btn-opcion {
+    background: #999;
+    color: #EEE;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
 .btn-editar {
     background: #007bff;
     color: white;

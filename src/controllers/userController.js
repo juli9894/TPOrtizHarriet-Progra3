@@ -52,7 +52,7 @@ const userController = {
                 )
                     
                 res.cookie("token", token, {httpOnly: true});
-                return res.redirect("/categorias");
+                return res.redirect("/admin/dashboard");
             }else{
                 return res.render("login", { mensaje: "Email o contraseña incorrectos."});
             }

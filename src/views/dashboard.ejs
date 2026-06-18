@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Dashboard - Panel Administrativo</title>
+</head>
+<body>
+    <%- include("./partials/header", { mostrarNav: true, admin: true }) %>
+        <h1 style="text-align: center;">Dashboard</h1>
+
+        <div class="catalogo-container">
+        <% if (listaProductos && listaProductos.length > 0) { %>
+            
+            <% listaProductos.forEach(producto => { %>
+                <div class="producto-card">
+
+                    <img src="/img/productos/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>">
+                    <h3><%= producto.nombre %></h3>
+                    <h4 class="categoria"><%= producto.categoria %></h4>
+                    <p class="precio">$ <%= producto.precio %></p>
+                    <p class="descripcion"><%= producto.descripcion %></p>
+
+                    <% if (producto.activo) { %>
+                        <form action="/admin/desactivar/<%= producto.id %>" method="POST">
+                            <button type="submit" class="btn-opcion"
+                                onclick="return confirm('¿Seguro que querés desactivar este producto?')">
+                                ❌ Desactivar Producto
+                            </button>
+                        </form>
+                    <% }else{ %>
+                        <form action="/admin/activar/<%= producto.id %>" method="POST">
+                            <button type="submit" class="btn-opcion"
+                                onclick="return confirm('¿Seguro que querés activar este producto?')">
+                                ✅ Activar Producto
+                            </button>
+                        </form>
+                    <% } %>
+
+                    <a href="/admin/editar/<%= producto.id %>" class="btn-editar">
+                        ✏️ Editar Producto
+                    </a>
+
+                    <form action="/admin/eliminar/<%= producto.id %>" method="POST">
+                        <button type="submit" class="btn-eliminar"
+                            onclick="return confirm('¿Seguro que querés eliminar este producto definitivamente?')">
+                            🗑️ Eliminar Producto
+                        </button>
+                    </form>
+
+
+                </div>
+            <% }) %>
+
+        <% } else { %>
+            <div style="text-align: center; grid-column: 1 / -1; padding: 40px;">
+                <h2>No hay perifericos disponibles en este momento.</h2>
+            </div>
+        <% } %>
+        
+    </div>
+    <%- include("./partials/footer") %>
+</body>
+</html>

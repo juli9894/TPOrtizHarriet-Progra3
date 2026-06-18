@@ -5,6 +5,15 @@ const adminController = {
     crearProducto: (req, res) => {
         res.render("crearProducto"); 
     },
+    dashboard: async (req, res) => {
+        try {
+            const productosActivos = await Producto.findAll();
+            return res.render("dashboard", { listaProductos: productosActivos });
+        } catch (error) {
+            console.error("Error al buscar en la base de datos:", error);
+            return res.send("Ocurrió un error al cargar el catálogo.");
+        }
+    },
     
     guardar: async (req, res) => {
         try {
@@ -74,6 +83,42 @@ const adminController = {
                 where: { id: idProducto }
             });
             return res.redirect("/categorias");
+        } catch (error) {
+            console.error("Error al actualizar:", error);
+            return res.send("Ocurrio un error al guardar los cambios.");
+        }
+    },
+
+    desactivar: async (req, res) => {
+        try {
+            const idProducto = req.params.id;
+
+            const datosActualizados = {
+                activo: false
+            };
+
+            await Producto.update(datosActualizados, {
+                where: { id: idProducto }
+            });            
+            return res.redirect("/admin/dashboard");
+        } catch (error) {
+            console.error("Error al actualizar:", error);
+            return res.send("Ocurrio un error al guardar los cambios.");
+        }
+    },
+
+    activar: async (req, res) => {
+        try {
+            const idProducto = req.params.id;
+
+            const datosActualizados = {
+                activo: true
+            };
+
+            await Producto.update(datosActualizados, {
+                where: { id: idProducto }
+            });            
+            return res.redirect("/admin/dashboard");
         } catch (error) {
             console.error("Error al actualizar:", error);
             return res.send("Ocurrio un error al guardar los cambios.");
