@@ -17,5 +17,6 @@ router.get('/login', userController.login);
 router.post("/login", userController.iniciarSesion);
 
 router.get("/logout", userController.logout);
+router.post('/ticket', mainController.generarTicket);
 
 module.exports = router;
