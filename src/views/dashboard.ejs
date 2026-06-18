@@ -10,6 +10,12 @@
     <%- include("./partials/header", { mostrarNav: true, admin: true }) %>
         <h1 style="text-align: center;">Dashboard</h1>
 
+        <div class="contenedor-boton">
+            <a href="/admin/crearProducto" class="btn-editar">
+                Añadir producto
+            </a>
+        </div>
+
         <div class="catalogo-container">
         <% if (listaProductos && listaProductos.length > 0) { %>
             
