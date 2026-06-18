@@ -44,20 +44,19 @@ body{
     color: #555;
 }
 
-.campo-form input {
+.campo-form input,
+.campo-form textarea {
+    width: 100%;
+    box-sizing: border-box;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    font-family: Arial, sans-serif;
 }
 
-.campo-form input, .campo-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    font-family: Arial, sans-serif; 
-    resize: vertical; 
+.campo-form textarea {
+    resize: vertical;
 }
 
 button {
