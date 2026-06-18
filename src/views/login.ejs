@@ -24,8 +24,13 @@
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit" style="background-color: #007bff;">Ingresar</button>
-
+            
+            <div class="campo-form campo-completo">
+                <button type="submit" style="background-color: #007bff;">Ingresar</button>
+                <% if (mensaje) { %>
+                    <label  style="text-align: center; color: red;"><%= mensaje %></label>
+                <% } %>
+            </div>
         </form>
 
         <p style="text-align: center; margin-top: 20px;">

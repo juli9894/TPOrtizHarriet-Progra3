@@ -16,67 +16,49 @@ const userController = {
             await Usuario.create({
                 nombre: req.body.nombre,
                 email: req.body.email,
-                password: contraseñaEncriptada
-            });
-
-            res.redirect('/login');
-
+                password: contraseñaEncriptada}
+            );
+            return res.redirect('/login');
         } catch (error) {
-            console.error('Error al registrar usuario:', error);
-            res.render("registro", {
-                mensaje: "La cuenta ya existe."
-            });
+            console.error(error);
+            return res.render("registro", {mensaje: "La cuenta ya existe."});
         }
     },
 
     login: (req, res) => {
-        res.render('login');
+        res.render("login", {
+            mensaje: ""
+        });
     },
 
     iniciarSesion: async (req, res) => {
         const { email, password } = req.body;
-
-        if(!email || !password){
-            return res.status(400).json({ 
-                mensaje: "El email o la contraseña son obligatorios" })
-        }
-
+        
         try{
-            const account = await Usuario.findOne({
-                where: { 
-                    email 
-                }
-            });
-            
-            //Verificar si existe la cuenta
-            if(!account){
-                return res.status(401).json({ mensaje: "Email o contraseña incorrectos" })
+            const account = await Usuario.findOne({where: {email}});
+            if (!account) {
+                return res.render("login", {mensaje: "La cuenta no existe."});
             }
 
-            //Validar la contraseña
             const validacion = await bcrypt.compare(password, account.password)
-
             if(validacion){
-                const token = jwt.sign({
-                    id: account.id,
-                    nombre: account.nombre,
-                    email: account.email
-                },
-                process.env.PASSWORD, { expiresIn: "5m" }
-            );
-
-            res.cookie("token", token, {
-                httpOnly: true
-            });
-            
-            return res.redirect("/categorias");
-            
+                const token = jwt.sign(
+                    {
+                        id: account.id,
+                        nombre: account.nombre,
+                        email: account.email
+                    },
+                    process.env.PASSWORD, {expiresIn: "5m"}
+                )
+                    
+                res.cookie("token", token, {httpOnly: true});
+                return res.redirect("/categorias");
             }else{
-                res.status(401).json({ mensaje: "Email o contraseña incorrectos" })
+                return res.render("login", { mensaje: "Email o contraseña incorrectos."});
             }
-        } catch(error){
-            console.log("Error al ingresar a la cuenta: ", error)
-            res.status(500).json({ mensaje: "Ocurrió un error"});
+        }catch(error){
+            console.error(error);
+            return res.render("login", {mensaje: "Ocurrió un error al iniciar sesión."});
         }  
     },
 
@@ -84,7 +66,6 @@ const userController = {
         res.clearCookie("token");
         res.redirect("/");
     }
-
 };
 
 module.exports = userController;
