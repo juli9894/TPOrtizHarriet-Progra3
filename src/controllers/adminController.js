@@ -24,7 +24,7 @@ const adminController = {
                 categoria: req.body.categoria,
                 imagen: req.file ? req.file.filename : "default.png"
             });
-            return res.redirect("/categorias");
+            return res.redirect("/admin/dashboard");
         } catch (error) {
             console.error(error);
             return res.send("Error al guardar.");
@@ -40,7 +40,7 @@ const adminController = {
                     id: idABorrar
                 }
             });
-            return res.redirect("/categorias");
+            return res.redirect("/admin/dashboard");
 
         } catch (error) {
             console.error("Error al eliminar el producto:", error);
@@ -82,7 +82,7 @@ const adminController = {
             await Producto.update(datosActualizados, {
                 where: { id: idProducto }
             });
-            return res.redirect("/categorias");
+            return res.redirect("/admin/dashboard");
         } catch (error) {
             console.error("Error al actualizar:", error);
             return res.send("Ocurrio un error al guardar los cambios.");
