@@ -15,10 +15,10 @@ const adminController = {
                 categoria: req.body.categoria,
                 imagen: req.file ? req.file.filename : "default.png"
             });
-            res.redirect("/categorias");
+            return res.redirect("/categorias");
         } catch (error) {
             console.error(error);
-            res.send("Error al guardar.");
+            return res.send("Error al guardar.");
         }
     },
 
@@ -31,11 +31,11 @@ const adminController = {
                     id: idABorrar
                 }
             });
-            res.redirect("/categorias");
+            return res.redirect("/categorias");
 
         } catch (error) {
             console.error("Error al eliminar el producto:", error);
-            res.send("Ocurrió un error al intentar eliminar el producto.");
+            return res.send("Ocurrió un error al intentar eliminar el producto.");
         }
     },
 
@@ -46,13 +46,13 @@ const adminController = {
             const productoEncontrado = await Producto.findByPk(idProducto);
 
             if (productoEncontrado) {
-                res.render("editarProducto", { producto: productoEncontrado });
+                return res.render("editarProducto", { producto: productoEncontrado });
             } else {
-                res.send("No se encontró el producto en la base de datos.");
+                return res.send("No se encontró el producto en la base de datos.");
             }
         } catch (error) {
             console.error("Error al buscar el producto:", error);
-            res.send("Error al cargar la vista de edición.");
+            return res.send("Error al cargar la vista de edición.");
         }
     },
 
@@ -73,10 +73,10 @@ const adminController = {
             await Producto.update(datosActualizados, {
                 where: { id: idProducto }
             });
-            res.redirect("/categorias");
+            return res.redirect("/categorias");
         } catch (error) {
             console.error("Error al actualizar:", error);
-            res.send("Ocurrio un error al guardar los cambios.");
+            return res.send("Ocurrio un error al guardar los cambios.");
         }
     }
 };
