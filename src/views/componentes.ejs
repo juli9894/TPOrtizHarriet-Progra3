@@ -7,7 +7,7 @@
     <title>Catálogo de Componentes</title>
 </head>
 <body>
-    <%- include('./partials/header', { mostrarNav: true, admin: false }) %>
+    <%- include("./partials/header", { mostrarNav: true, admin: false }) %>
         <h1 style="text-align: center;">Catálogo de Componentes</h1>
         <% if(usuario){ %>
             <div class="contenedor-boton">
@@ -51,6 +51,6 @@
             </div>
         <% } %>
     </div>
-    <%- include('./partials/footer') %>
+    <%- include("./partials/footer") %>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <title>Tu Carrito de Compras</title>
 </head>
 <body>
-    <%- include('./partials/header', { mostrarNav: true, admin: false }) %>
+    <%- include("./partials/header", { mostrarNav: true, admin: false }) %>
     
     <main class="catalogo-container" style="max-width: 800px; margin: 40px auto; display: block;">
         <h1 style="text-align: center; margin-bottom: 30px;">🛒 Tu Carrito</h1>
@@ -26,22 +26,22 @@
         </div>
     </main>
 
-    <%- include('./partials/footer') %>
+    <%- include("./partials/footer") %>
 
     <script>
-        const carrito = JSON.parse(localStorage.getItem('carritoHardzone')) || [];
-        const contenedor = document.getElementById('contenedor-items-carrito');
-        const spanTotal = document.getElementById('total-pagar');
+        const carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
+        const contenedor = document.getElementById("contenedor-items-carrito");
+        const spanTotal = document.getElementById("total-pagar");
 
 
         function renderizarCarrito() {
 
-            contenedor.innerHTML = '';
+            contenedor.innerHTML = "";
             let total = 0;
 
             if (carrito.length === 0) {
-                contenedor.innerHTML = '<h3 style="text-align: center; color: #666;">Tu carrito esta vacio!</h3>';
-                spanTotal.innerText = '0';
+                contenedor.innerHTML = "<h3 style='text-align: center; color: #666;'>Tu carrito esta vacio!</h3>";
+                spanTotal.innerText = "0";
                 return;
             }
 
@@ -69,7 +69,7 @@
 
         function eliminarItem(index) {
             carrito.splice(index, 1);
-            localStorage.setItem('carritoHardzone', JSON.stringify(carrito)); 
+            localStorage.setItem("carritoHardzone", JSON.stringify(carrito)); 
             renderizarCarrito();
         }
 
@@ -83,25 +83,25 @@
             carrito.forEach(p => total += (p.precio * p.cantidad));
 
             try {
-                const response = await fetch('/ticket', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                const response = await fetch("/ticket", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ carrito: carrito, total: total })
                 });
 
                 if (response.ok) {
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
+                    const a = document.createElement("a");
                     a.href = url;
-                    a.download = 'Ticket_HardZone.pdf';
+                    a.download = "Ticket_HardZone.pdf";
                     document.body.appendChild(a);
                     a.click();
                     a.remove();
                     window.URL.revokeObjectURL(url);
 
                     alert("¡Compra finalizada! Tu comprobante se está descargando.");
-                    localStorage.removeItem('carritoHardzone'); 
+                    localStorage.removeItem("carritoHardzone"); 
                     window.location.href = "/"; 
                 } else {
                     alert("Ocurrió un error en el servidor al generar el ticket.");

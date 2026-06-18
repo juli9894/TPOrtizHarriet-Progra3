@@ -1,6 +1,6 @@
-const bcrypt = require('bcryptjs');
-const Usuario = require('../database/models/Usuario');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
+const Usuario = require("../database/models/Usuario");
+const jwt = require("jsonwebtoken");
 
 const userController = {
     registro: (req, res) => {
@@ -18,7 +18,7 @@ const userController = {
                 email: req.body.email,
                 password: contraseñaEncriptada}
             );
-            return res.redirect('/login');
+            return res.redirect("/login");
         } catch (error) {
             console.error(error);
             return res.render("registro", {mensaje: "La cuenta ya existe."});

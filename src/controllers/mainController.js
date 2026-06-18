@@ -1,10 +1,11 @@
-const PDFDocument = require('pdfkit');
-const Producto = require('../database/models/Producto');
+const PDFDocument = require("pdfkit");
+const Producto = require("../database/models/Producto");
 
 const mainController = {
     home: (req, res) => {
-        res.render('index');
+        res.render("index");
     },
+    
     categorias: (req, res)=>{
         res.render("categorias");
     },
@@ -17,9 +18,9 @@ const mainController = {
                     activo: true
                 }
             });
-            res.render('perifericos', { listaProductos: productosActivos });
+            return res.render("perifericos", { listaProductos: productosActivos });
         } catch (error) {
-            console.error('Error al buscar en la base de datos:', error);
+            console.error("Error al buscar en la base de datos:", error);
         }
     },
 
@@ -31,37 +32,37 @@ const mainController = {
                     activo: true
                 }
             });
-            res.render('componentes', { listaProductos: productosActivos });
+            return res.render("componentes", { listaProductos: productosActivos });
         } catch (error) {
-            console.error('Error al buscar en la base de datos:', error);
-            res.send('Ocurrió un error al cargar el catálogo.');
+            console.error("Error al buscar en la base de datos:", error);
+            return res.send("Ocurrió un error al cargar el catálogo.");
         }
     },
 
     carrito: (req, res) => {
-        res.render('carrito');
+        res.render("carrito");
     },
 
     generarTicket: (req, res) => {
         const { carrito, total } = req.body;
 
-        res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', 'attachment; filename=Ticket_HardZone.pdf');
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader("Content-Disposition", "attachment; filename=Ticket_HardZone.pdf");
 
         const doc = new PDFDocument({ margin: 50 });
         doc.pipe(res); 
 
-        doc.fontSize(20).text('HardZone Autoservicio', { align: 'center' });
+        doc.fontSize(20).text("HardZone Autoservicio", { align: "center" });
         doc.moveDown();
-        doc.fontSize(14).text('Comprobante de Compra', { align: 'center' });
-        doc.fontSize(12).text(`Fecha: ${new Date().toLocaleDateString()}`, { align: 'center' });
+        doc.fontSize(14).text("Comprobante de Compra", { align: "center" });
+        doc.fontSize(12).text(`Fecha: ${new Date().toLocaleDateString()}`, { align: "center" });
         doc.moveDown(2);
 
         let currentY = doc.y;
         doc.fontSize(12);
-        doc.text('Producto', 50, currentY);
-        doc.text('Cant.', 320, currentY);
-        doc.text('Subtotal', 420, currentY);
+        doc.text("Producto", 50, currentY);
+        doc.text("Cant.", 320, currentY);
+        doc.text("Subtotal", 420, currentY);
         
         currentY += 15;
         doc.moveTo(50, currentY).lineTo(500, currentY).stroke(); 
@@ -83,10 +84,10 @@ const mainController = {
         doc.moveTo(50, currentY).lineTo(500, currentY).stroke();
         currentY += 20;
         
-        doc.fontSize(16).text(`TOTAL: $${total}`, 50, currentY, { align: 'right', width: 450 });
+        doc.fontSize(16).text(`TOTAL: $${total}`, 50, currentY, { align: "right", width: 450 });
         
         currentY += 40;
-        doc.fontSize(12).text('¡Gracias por tu compra!', 50, currentY, { align: 'center', width: 450 });
+        doc.fontSize(12).text("¡Gracias por tu compra!", 50, currentY, { align: "center", width: 450 });
 
         doc.end();
     }
