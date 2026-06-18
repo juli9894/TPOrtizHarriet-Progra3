@@ -4,33 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Mi Carrito - HardZone</title>
+    <title>Tu Carrito de Compras</title>
 </head>
 <body>
-    <%- include('./partials/header', { mostrarNav: true }) %>
-    <main class="container" style="max-width: 500px;">
-        <h1>Tu Carrito de Compras</h1>
-        <p>Revisá y modificá tu pedido antes de finalizar la compra.</p>
-
-        <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; max-width: 500px;">
-            <h3>Auriculares HyperX Cloud 2</h3>
-            <p>Precio Unitario: $100</p>
-            <p>
-                Cantidad: 
-                <button type="button" style="background-color: #007bff; color: white;">-</button> 
-                <span>1</span> 
-                <button type="button" style="background-color: #007bff; color: white;">+</button>
-            </p>
-            <div class="campo-form campo-completo">
-                <button type="button" style="color: #666; background-color:#ddd;">Eliminar del carrito</button>
-            </div>
-        </div>
-
-        <div class="campo-form campo-completo">
-            <button type="button">Confirmar Compra</button>
-        </div>
+    <%- include('./partials/header', { mostrarNav: true, admin: false }) %>
+    
+    <main class="catalogo-container" style="max-width: 800px; margin: 40px auto; display: block;">
+        <h1 style="text-align: center; margin-bottom: 30px;">🛒 Tu Carrito</h1>
         
+        <div id="contenedor-items-carrito">
+            </div>
+
+        <div style="text-align: right; margin-top: 20px; font-size: 1.5rem;">
+            <strong>Total a pagar: $<span id="total-pagar">0</span></strong>
+        </div>
+
+        <div style="text-align: right; margin-top: 20px;">
+            <button onclick="finalizarCompra()" style="background-color: #28a745; color: white; padding: 15px 30px; border: none; font-size: 1.2rem; cursor: pointer; border-radius: 5px;">
+                Finalizar Compra
+            </button>
+        </div>
     </main>
+
     <%- include('./partials/footer') %>
+
+    <script>
+        const carrito = JSON.parse(localStorage.getItem('carritoHardzone')) || [];
+        const contenedor = document.getElementById('contenedor-items-carrito');
+        const spanTotal = document.getElementById('total-pagar');
+
+
+        function renderizarCarrito() {
+
+            contenedor.innerHTML = '';
+            let total = 0;
+
+            if (carrito.length === 0) {
+                contenedor.innerHTML = '<h3 style="text-align: center; color: #666;">Tu carrito esta vacio!</h3>';
+                spanTotal.innerText = '0';
+                return;
+            }
+
+            carrito.forEach((producto, index) => {
+                total += producto.precio * producto.cantidad;
+
+                contenedor.innerHTML += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding: 15px 0;">
+                        <div>
+                            <h3 style="margin: 0;">${producto.nombre}</h3>
+                            <p style="margin: 5px 0; color: #555;">Precio unitario: $${producto.precio}</p>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <strong>$${producto.precio * producto.cantidad}</strong>
+                            <button onclick="eliminarItem(${index})" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                                🗑️ Quitar
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            spanTotal.innerText = total;
+        }
+
+        function eliminarItem(index) {
+            carrito.splice(index, 1);
+            localStorage.setItem('carritoHardzone', JSON.stringify(carrito)); 
+            renderizarCarrito();
+        }
+
+        function finalizarCompra() {
+            if(carrito.length === 0) {
+                alert("No tenés productos para comprar.");
+                return;
+            }
+            alert("¡Gracias por tu compra en HardZone! Te contactaremos por mail para el pago.");
+            localStorage.removeItem('carritoHardzone'); 
+            window.location.href = "/"; 
+        }
+
+        renderizarCarrito();
+    </script>
 </body>
 </html>
