@@ -39,6 +39,23 @@ const mainController = {
         }
     },
 
+    detalle: async (req, res) => {
+        try {
+            const idProducto = req.params.id;
+            
+            const productoEncontrado = await Producto.findByPk(idProducto);
+
+            if (productoEncontrado) {
+                return res.render("detalle", { producto: productoEncontrado });
+            } else {
+                return res.send("Producto no encontrado.");
+            }
+        } catch (error) {
+            console.error("Error al buscar el detalle del producto:", error);
+            return res.send("Ocurrió un error al cargar el producto.");
+        }
+    },
+
     carrito: (req, res) => {
         res.render("carrito");
     },

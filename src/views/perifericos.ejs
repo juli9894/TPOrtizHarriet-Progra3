@@ -16,8 +16,11 @@
             <% listaProductos.forEach(producto => { %>
                 <div class="producto-card">
 
-                    <img src="/img/productos/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>">
-                    <h3><%= producto.nombre %></h3>
+                    <a href="/producto/<%= producto.id %>" style="text-decoration: none; color: inherit; display: block; text-align: center;">
+                        <img src="/img/productos/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>" style="transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <h3 onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='inherit'" style="transition: color 0.2s ease;"><%= producto.nombre %></h3>
+                    </a>
+
                     <p class="precio">$ <%= producto.precio %></p>
                     <p class="descripcion"><%= producto.descripcion %></p>
 
