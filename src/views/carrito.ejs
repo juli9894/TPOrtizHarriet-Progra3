@@ -36,6 +36,10 @@
 
         function renderizarCarrito() {
 
+            let carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
+            const contenedor = document.getElementById("contenedor-items-carrito");
+            const spanTotal = document.getElementById("total-pagar");
+
             contenedor.innerHTML = "";
             let total = 0;
 
@@ -50,11 +54,18 @@
 
                 contenedor.innerHTML += `
                     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding: 15px 0;">
-                        <div>
+                        <div style="flex-grow: 1;">
                             <h3 style="margin: 0;">${producto.nombre}</h3>
                             <p style="margin: 5px 0; color: #555;">Precio unitario: $${producto.precio}</p>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 15px;">
+                        
+                        <div style="display: flex; align-items: center; gap: 10px; margin-right: 20px;">
+                            <button onclick="cambiarCantidad(${index}, -1)" style="padding: 5px 10px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; border-radius: 4px;">-</button>
+                            <span style="font-size: 1.2rem; font-weight: bold; min-width: 20px; text-align: center;">${producto.cantidad}</span>
+                            <button onclick="cambiarCantidad(${index}, 1)" style="padding: 5px 10px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; border-radius: 4px;">+</button>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 15px; min-width: 150px; justify-content: flex-end;">
                             <strong>$${producto.precio * producto.cantidad}</strong>
                             <button onclick="eliminarItem(${index})" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
                                 🗑️ Quitar
@@ -65,6 +76,24 @@
             });
 
             spanTotal.innerText = total;
+        }
+
+        function cambiarCantidad(index, operacion) {
+            let carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
+            
+            carrito[index].cantidad += operacion;
+
+            if (carrito[index].cantidad <= 0) {
+                let confirmar = confirm("¿Querés quitar este producto del carrito?");
+                if (confirmar) {
+                    carrito.splice(index, 1);
+                } else {
+                    carrito[index].cantidad = 1; 
+                }
+            }
+
+            localStorage.setItem("carritoHardzone", JSON.stringify(carrito));
+            renderizarCarrito();
         }
 
         function eliminarItem(index) {

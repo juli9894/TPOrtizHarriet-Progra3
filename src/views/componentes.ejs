@@ -21,7 +21,7 @@
                     <p class="precio">$ <%= producto.precio %></p>
                     <p class="descripcion"><%= producto.descripcion %></p>
 
-                    <button type="button" class="btn-comprar" onclick="agregarAlCarrito('<%= producto.id %>', '<%= producto.nombre %>', '<%= producto.precio %>')">
+                    <button type="button" class="btn-comprar" onclick="abrirModalCantidad('<%= producto.id %>', '<%= producto.nombre %>', '<%= producto.precio %>')">
                         🛒 Agregar al carrito
                     </button>
 
@@ -30,11 +30,31 @@
 
         <% } else { %>
             <div style="text-align: center; grid-column: 1 / -1; padding: 40px;">
-                <h2>No hay perifericos disponibles en este momento.</h2>
+                <h2>No hay componentes disponibles en este momento.</h2>
             </div>
         <% } %>
 
     </div>
     <%- include("./partials/footer") %>
+
+    <div id="modal-cantidad" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px; border-radius: 10px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            <h3 style="margin-top: 0; color: #333;">Seleccionar cantidad</h3>
+            <p id="modal-nombre-producto" style="color: #007bff; margin-bottom: 20px; font-weight: bold; font-size: 1.2rem;"></p>
+            
+            <select id="modal-select-cantidad" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1.1rem; margin-bottom: 25px;">
+                <option value="1">1 unidad</option>
+                <option value="2">2 unidades</option>
+                <option value="3">3 unidades</option>
+                <option value="4">4 unidades</option>
+                <option value="5">5 unidades</option>
+            </select>
+            
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="cerrarModalCantidad()" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; flex-grow: 1; font-weight: bold;">Cancelar</button>
+                <button onclick="confirmarAgregarAlCarrito()" style="background: #28a745; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; flex-grow: 1; font-weight: bold;">🛒 Agregar</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
