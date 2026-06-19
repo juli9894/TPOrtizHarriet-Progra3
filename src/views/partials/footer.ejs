@@ -3,18 +3,3 @@
         <p><small>Desarrollado por Julian Ortiz y Mauricio Harriet</small></p>
     </div>
 </footer>
-
-<script>
-    function cambiarInvitado() {
-        let confirmacion = confirm("¿Querés salir y cambiar de usuario? Esto vaciará tu carrito de compras actual.");
-        
-        if (confirmacion) {
-            localStorage.removeItem('nombreInvitado');
-            localStorage.removeItem('carritoHardzone');
-            
-            window.location.href = "/";
-        }
-    }
-</script>
-
-<script src="/js/carrito.js"></script>

@@ -1,3 +1,16 @@
+<script>
+    function cambiarInvitado() {
+        let confirmacion = confirm("¿Querés salir y cambiar de usuario? Esto vaciará tu carrito de compras actual.");
+        
+        if (confirmacion){
+            localStorage.removeItem("nombreInvitado");
+            localStorage.removeItem("carritoHardzone");
+            window.location.href = "/";
+        }
+    }
+</script>
+
+<script src="/js/carrito.js"></script>
 <header>
     <div class="barra" id="primeraBarra">
         <p>Los mejores precios en todo el país</p>
@@ -5,8 +18,8 @@
     
     <div class="barra" id="segundaBarra">
 
-        <a href="/" class="logo">
-            <h2 class="logo" onclick="cambiarInvitado()">💻 HardZone Autoservicio</h2>
+        <a href="#" onclick="cambiarInvitado()">
+            <h2 class="logo">💻 HardZone Autoservicio</h2>
         </a>
 
         <% if (mostrarNav) { %>
