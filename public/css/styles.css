@@ -1,4 +1,3 @@
-/* Estilos generales del contenedor */
 body{
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,6 +10,7 @@ body{
         #e8f2ff 100%
     );
     background-attachment: fixed;
+    padding-bottom: 60px;
 }
 
 
@@ -164,7 +164,7 @@ button {
 
 #segundaBarra {
     position: fixed;
-    top: 32px; /* debajo de la primera barra */
+    top: 32px; 
     left: 0;
 
     height: 66px;
@@ -193,8 +193,7 @@ button {
 
 .catalogo-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));    gap: 25px;
     max-width: 1200px;
     margin: 30px auto;
     padding: 20px;
@@ -243,7 +242,7 @@ button {
     color: #444;
     margin-bottom: 20px;
 
-    /* evita que una descripción larga rompa el diseño */
+
     min-height: 60px;
 }
 
@@ -290,12 +289,14 @@ button {
 @media (max-width: 768px) {
 
     body {
-        padding-top: 100px; /* probá 90, 95 o 100 */
+        padding-top: 140px; 
     }
 
     #segundaBarra {
         flex-direction: column;
         height: auto;
+        padding-bottom: 10px; 
+        gap: 10px;
     }
 
     .logo{
