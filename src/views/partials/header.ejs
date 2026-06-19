@@ -6,7 +6,7 @@
     <div class="barra" id="segundaBarra">
 
         <a href="/" class="logo">
-            <h2 class="logo">💻 HardZone Autoservicio</h2>
+            <h2 class="logo" onclick="cambiarInvitado()">💻 HardZone Autoservicio</h2>
         </a>
 
         <% if (mostrarNav) { %>
@@ -14,9 +14,8 @@
                 <a href="/categorias">Categorias</a>
                 <a href="/carrito">Carrito</a>
                 <% if(usuario){ %>
+                    <a href="/admin/dashboard">Panel</a>
                     <a href="/logout">Cerrar sesión</a>
-                <% } else { %>
-                    <a href="#" onclick="cambiarInvitado()">👤 Cambiar invitado</a>
                 <% } %>
             </nav>
         <% } %>
