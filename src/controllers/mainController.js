@@ -44,7 +44,7 @@ const mainController = {
     },
 
     generarTicket: (req, res) => {
-        const { carrito, total } = req.body;
+        const { carrito, total, cliente } = req.body;
 
         res.setHeader("Content-Type", "application/pdf");
         res.setHeader("Content-Disposition", "attachment; filename=Ticket_HardZone.pdf");
@@ -55,6 +55,8 @@ const mainController = {
         doc.fontSize(20).text("HardZone Autoservicio", { align: "center" });
         doc.moveDown();
         doc.fontSize(14).text("Comprobante de Compra", { align: "center" });
+        
+        doc.fontSize(12).text(`Cliente: ${cliente}`, { align: 'center' });
         doc.fontSize(12).text(`Fecha: ${new Date().toLocaleDateString()}`, { align: "center" });
         doc.moveDown(2);
 

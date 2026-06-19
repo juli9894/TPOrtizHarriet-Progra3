@@ -82,11 +82,13 @@
             let total = 0;
             carrito.forEach(p => total += (p.precio * p.cantidad));
 
+            let nombreCliente = localStorage.getItem('nombreInvitado') || 'Invitado';
+
             try {
                 const response = await fetch("/ticket", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ carrito: carrito, total: total })
+                    body: JSON.stringify({ carrito: carrito, total: total, cliente: nombreCliente})
                 });
 
                 if (response.ok) {
