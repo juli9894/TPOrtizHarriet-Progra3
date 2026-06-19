@@ -10,20 +10,20 @@
     <%- include("./partials/header", { mostrarNav: false }) %>
 
     <main class="container" style="max-width: 500px;">
-            <h1>Bienvenido a nuestra terminal de autoservicio</h1>
+        <h1>Bienvenido a nuestra terminal de autoservicio</h1>
 
-            <form action="/categorias" method="GET" class="form">
+        <form action="/categorias" method="GET" class="form" id="form-ingreso">
 
-                <div class="campo-form">
-                    <label for="nombre">Por favor, ingresá tu nombre para poder ver los productos disponibles:</label>
-                    <input type="text" id="nombre" name="nombre" name="nombreCliente" placeholder="Ej. Juan Pérez" required>
-                </div>
+            <div class="campo-form">
+                <label for="nombre">Por favor, ingresá tu nombre para poder ver los productos disponibles:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
 
-                <div class="campo-form">
-                    <button type="submit" style="background-color: #007bff">Continuar</button>
-                </div>
+            <div class="campo-form">
+                <button type="submit" style="background-color: #007bff">Continuar</button>
+            </div>
 
-            </form>
+        </form>
 
         <p style="text-align: center; margin-top: 20px;">
             Si sos un administrador, <a href="/login" style="color: #007bff; text-decoration: none; font-weight: bold;">iniciá sesión aquí</a>
@@ -31,5 +31,20 @@
     </main>
 
     <%- include("./partials/footer") %>
+
+    <script>
+        const formIngreso = document.getElementById('form-ingreso');
+        const inputNombre = document.getElementById('nombre');
+
+        const nombreGuardado = localStorage.getItem('nombreInvitado');
+
+        if (nombreGuardado) {
+            inputNombre.value = nombreGuardado;
+        }
+
+        formIngreso.addEventListener('submit', function() {
+            localStorage.setItem('nombreInvitado', inputNombre.value);
+        });
+    </script>
 </body>
 </html>

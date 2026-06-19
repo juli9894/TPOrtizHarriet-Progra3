@@ -14,8 +14,9 @@
                 <a href="/categorias">Categorias</a>
                 <a href="/carrito">Carrito</a>
                 <% if(usuario){ %>
-                    <a href="/admin/dashboard">Dashboard</a>
                     <a href="/logout">Cerrar sesión</a>
+                <% } else { %>
+                    <a href="#" onclick="cambiarInvitado()">👤 Cambiar invitado</a>
                 <% } %>
             </nav>
         <% } %>
