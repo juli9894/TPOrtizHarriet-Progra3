@@ -48,7 +48,7 @@ const userController = {
                         nombre: account.nombre,
                         email: account.email
                     },
-                    process.env.PASSWORD, {expiresIn: "5m"}
+                    process.env.PASSWORD, {expiresIn: "15m"}
                 )
                     
                 res.cookie("token", token, {httpOnly: true});

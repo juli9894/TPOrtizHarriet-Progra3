@@ -1,14 +1,30 @@
 const Producto = require("../database/models/Producto");
+const Venta = require("../database/models/Venta");
 
 const adminController = {
 
     crearProducto: (req, res) => {
         res.render("crearProducto"); 
     },
+
     dashboard: async (req, res) => {
         try {
             const productosActivos = await Producto.findAll();
             return res.render("dashboard", { listaProductos: productosActivos });
+        } catch (error) {
+            console.error("Error al buscar en la base de datos:", error);
+            return res.send("Ocurrió un error al cargar el catálogo.");
+        }
+    },
+    
+    ventas: async (req, res) => {
+        try {
+            const ventas = await Venta.findAll();
+            
+            ventas.forEach(venta => {
+                venta.productos = JSON.parse(venta.productos);
+            })
+            return res.render("ventas", { listaVentas: ventas });
         } catch (error) {
             console.error("Error al buscar en la base de datos:", error);
             return res.send("Ocurrió un error al cargar el catálogo.");

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Ventas - Panel Administrativo</title>
+</head>
+<body>
+    <%- include("./partials/header", { mostrarNav: true, admin: true }) %>
+    <h1 style="text-align: center;">Ventas</h1>
+
+
+    <% if (listaVentas && listaVentas.length > 0) { %>
+    <div class="contenedor-tabla">
+        <table class="tabla-ventas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% listaVentas.forEach(venta => { %>
+                    <tr>
+
+                        <td><%=venta.id%></td></td>
+
+                        <td><%=new Date(venta.createdAt).toLocaleString('es-AR')%></td>
+
+                        <td><%=venta.cliente%></td>
+                        
+                        <td>
+                            <ul>
+                                <% venta.productos.forEach(producto => { %>
+                                    <li>
+                                        <%=producto.nombre%>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <% venta.productos.forEach(producto => { %>
+                                <div>
+                                    <%=producto.cantidad%>
+                                </div>
+                            <% }) %>
+                        </td>
+
+                        <td>
+                            <% venta.productos.forEach(producto => { %>
+                                <div>
+                                    $<%=producto.precio%>
+                                </div>
+                            <% }) %>
+                        </td>
+
+                        <td>$<%=venta.precio_final%></td>
+
+                    </tr>
+                <% }) %>
+            </tbody>
+            
+        </table>
+    </div>
+    <% } else { %>
+        <div style="text-align: center; grid-column: 1 / -1; padding: 40px;">
+            <h2>No hay ventas en este momento.</h2>
+        </div>
+    <% } %>
+        
+    <%- include("./partials/footer") %>
+</body>
+</html>

@@ -286,6 +286,38 @@ button {
     justify-content: center;
 }
 
+
+.contenedor-tabla {
+    width: 100%;
+    max-width: 1200px;
+    height: 600px;
+    margin: 0 auto;
+    overflow: auto;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.tabla-ventas {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tabla-ventas thead {
+    position: sticky;
+    top: 0;
+    background: #007bff;
+    color: white;
+}
+
+.tabla-ventas th,
+.tabla-ventas td {
+    border: 1px solid #ccc;
+    padding: 2px;
+    overflow-wrap: break-word;
+}
+
+
 @media (max-width: 768px) {
 
     body {
@@ -329,5 +361,24 @@ button {
     .item img {
         width: 65%;
         max-width: 320px;
+    }
+
+    .contenedor-tabla {
+        width: 100%;
+        max-width: 100%;
+        height: 350px; 
+        overflow-x: auto; 
+    }
+
+    .tabla-ventas {
+        width: 100%;
+        min-width: 700px;
+        font-size: 13px;
+    }
+
+    .tabla-ventas th,
+    .tabla-ventas td {
+        padding: 4px;
+        font-size: 12px;
     }
 }

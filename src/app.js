@@ -38,6 +38,7 @@ app.use("/admin", adminRoutes);
 const sequelize = require("./database/connection");
 const Producto = require("./database/models/Producto");
 const Usuario = require("./database/models/Usuario");
+const Venta = require("./database/models/Venta");
 
 sequelize.sync()
     .then(() => {

@@ -8,6 +8,7 @@ const upload = require("../middlewares/uploadMiddleware");
 router.use(authMiddleware);
 
 router.get("/dashboard", adminController.dashboard);
+router.get("/ventas", adminController.ventas);
 
 router.get("/crearProducto", adminController.crearProducto);
 router.post("/crearProducto", upload.single("imagen"), adminController.guardar);
