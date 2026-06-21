@@ -20,10 +20,7 @@ const adminController = {
     ventas: async (req, res) => {
         try {
             const ventas = await Venta.findAll();
-            
-            ventas.forEach(venta => {
-                venta.productos = JSON.parse(venta.productos);
-            })
+        
             return res.render("ventas", { listaVentas: ventas });
         } catch (error) {
             console.error("Error al buscar en la base de datos:", error);
