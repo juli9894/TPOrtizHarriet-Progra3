@@ -30,11 +30,22 @@ const adminController = {
     
     guardar: async (req, res) => {
         try {
+            const { nombre, precio, descripcion, categoria } = req.body;
+
+            if(!nombre || nombre.trim() === ""){
+                return res.send("Nombre vacio");
+            }
+            if(!precio || precio.trim() === "" || isNaN(precio) || Number(precio) <= 0){
+                return res.send("Precio invalido");
+            }
+            if(!categoria || categoria.trim() === "" || (categoria !== "Periferico" && categoria !== "Componente")){
+                return res.send("Categoria invalida");
+            }
             await Producto.create({
-                nombre: req.body.nombre,
-                precio: req.body.precio,
-                descripcion: req.body.descripcion,
-                categoria: req.body.categoria,
+                nombre, 
+                precio, 
+                descripcion, 
+                categoria, 
                 imagen: req.file ? req.file.filename : "default.png"
             });
             return res.redirect("/admin/dashboard");
