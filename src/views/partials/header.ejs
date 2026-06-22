@@ -24,6 +24,10 @@
         </a>
 
         <nav>
+            <% if(login) { %>
+                <a href="/login" class="nav-btn" style="background: #aaa;">🛡️</a>
+            <% } %>
+
             <% if(categorias) { %>
                 <a href="/categorias" class="nav-btn" style="background: #3186d1;">Atras</a>
             <% } %>
