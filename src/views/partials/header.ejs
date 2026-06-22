@@ -1,9 +1,13 @@
 <script>
+
+    if (localStorage.getItem('temaHardzone') === 'oscuro') {
+        document.documentElement.classList.add('dark-theme');
+    }
+
     function cambiarInvitado() {
         let confirmacion = confirm("¿Querés salir y cambiar de usuario? Esto vaciará tu carrito de compras actual.");
         
         if (confirmacion){
-            
             localStorage.removeItem("nombreInvitado");
             localStorage.removeItem("carritoHardzone");
             window.location.href = "/logout";
@@ -12,6 +16,7 @@
 </script>
 
 <script src="/js/carrito.js"></script>
+
 <header>
     <div class="barra" id="primeraBarra">
         <p>Los mejores precios en todo el país</p>
@@ -24,6 +29,8 @@
         </a>
 
         <nav>
+            <button type="button" onclick="alternarTema()" id="btn-toggle-tema" class="nav-btn" style="background: #1f1f1f; color: #fff; border: none; cursor: pointer; padding: 0 12px; font-size: 1.1rem;" title="Cambiar tema">🌙</button>
+
             <%# Acceso rapido al dashboard %>
             <% if(login) { %>
                 <a href="/login?test=1" class="nav-btn" style="background: #aaa;">🛡️</a>
@@ -51,3 +58,28 @@
         </nav>
     </div>
 </header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const botonTema = document.getElementById('btn-toggle-tema');
+        if (localStorage.getItem('temaHardzone') === 'oscuro') {
+            document.documentElement.classList.add('dark-theme');
+            document.body.classList.add('dark-theme');
+            if (botonTema) botonTema.innerText = '☀️';
+        }
+    });
+
+    function alternarTema() {
+        const botonTema = document.getElementById('btn-toggle-tema');
+        document.documentElement.classList.toggle('dark-theme');
+        document.body.classList.toggle('dark-theme');
+
+        if (document.body.classList.contains('dark-theme')) {
+            localStorage.setItem('temaHardzone', 'oscuro');
+            if (botonTema) botonTema.innerText = '☀️';
+        } else {
+            localStorage.setItem('temaHardzone', 'claro');
+            if (botonTema) botonTema.innerText = '🌙';
+        }
+    }
+</script>

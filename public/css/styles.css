@@ -394,3 +394,82 @@ button {
         font-size: 12px;
     }
 }
+
+
+html.dark-theme,
+body.dark-theme {
+    background: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-theme > div,
+body.dark-theme > section,
+body.dark-theme > main,
+body.dark-theme > article,
+body.dark-theme [class*="container"],
+body.dark-theme [class*="contenedor"],
+body.dark-theme .contenido {
+    background: #121212 !important;
+}
+
+body:not(.dark-theme) h1,
+body:not(.dark-theme) h2:not(.logo),
+body:not(.dark-theme) h3 {
+    color: #222222 !important;
+}
+
+body.dark-theme h1,
+body.dark-theme h2:not(.logo),
+body.dark-theme h3,
+body.dark-theme .titulo {
+    color: #ffffff !important;
+}
+
+body.dark-theme table,
+body.dark-theme td,
+body.dark-theme th {
+    color: #ffffff !important;
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+}
+
+body.dark-theme .producto-card {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333333 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8) !important;
+}
+
+body.dark-theme .producto-card img,
+body.dark-theme [class*="categoria"] img {
+    background-color: #ffffff !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    box-sizing: border-box;
+}
+
+body.dark-theme .categorias-container a,
+body.dark-theme .categorias-container h1,
+body.dark-theme .categorias-container h2,
+body.dark-theme .categorias-container h3,
+body.dark-theme [class*="categoria"] {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+body.dark-theme a:not(.nav-btn),
+body.dark-theme a:not(.nav-btn) h1,
+body.dark-theme a:not(.nav-btn) h2,
+body.dark-theme a:not(.nav-btn) h3,
+body.dark-theme a:not(.nav-btn) span,
+body.dark-theme [class*="categoria"] a,
+body.dark-theme [class*="categoria"] h2,
+body.dark-theme [class*="categoria"] h3 {
+    color: #ffffff !important;
+}
+
+body.dark-theme a:not(.nav-btn):hover,
+body.dark-theme a:not(.nav-btn):hover h1,
+body.dark-theme a:not(.nav-btn):hover h2,
+body.dark-theme a:not(.nav-btn):hover h3 {
+    color: #ffffff !important;
+}
