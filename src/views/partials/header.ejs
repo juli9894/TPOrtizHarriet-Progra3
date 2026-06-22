@@ -1,4 +1,8 @@
 <script>
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = 'https://fav.farm/💻';
+    document.head.appendChild(favicon);
 
     if (localStorage.getItem('temaHardzone') === 'oscuro') {
         document.documentElement.classList.add('dark-theme');
