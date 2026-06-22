@@ -24,8 +24,9 @@
         </a>
 
         <nav>
+            <%# Acceso rapido al dashboard %>
             <% if(login) { %>
-                <a href="/login" class="nav-btn" style="background: #aaa;">🛡️</a>
+                <a href="/login?test=1" class="nav-btn" style="background: #aaa;">🛡️</a>
             <% } %>
 
             <% if(categorias) { %>

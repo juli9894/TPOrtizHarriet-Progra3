@@ -38,6 +38,18 @@
 
     </main>
 
+    <%# Acceso rapido al dashboard %>
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const parametros = new URLSearchParams(window.location.search);
+
+        if(parametros.get("test")==="1"){
+            document.getElementById("email").value = "admin@hardzone.com";
+            document.getElementById("password").value = "123456";
+        };
+    });
+    </script>
+    
     <%- include("./partials/footer") %>
 </body>
 </html>
