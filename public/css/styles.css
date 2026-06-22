@@ -473,3 +473,21 @@ body.dark-theme a:not(.nav-btn):hover h2,
 body.dark-theme a:not(.nav-btn):hover h3 {
     color: #ffffff !important;
 }
+
+body.dark-theme #modal-confirmacion .modal-content {
+    background: #1e1e1e !important;
+    color: #ffffff !important;
+    border: 1px solid #333333 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9) !important;
+}
+
+body.dark-theme #modal-confirmacion p {
+    color: #e0e0e0 !important;
+}
+
+body.dark-theme .producto-card p,
+body.dark-theme .producto-card small,
+body.dark-theme .producto-card .descripcion {
+    color: #b3b3b3 !important;
+    line-height: 1.4;
+}

@@ -12,39 +12,44 @@
     <main class="catalogo-container" style="max-width: 800px; margin: 40px auto; display: block;">
         <h1 style="text-align: center; margin-bottom: 30px;">🛒 Tu Carrito</h1>
         
-        <div id="contenedor-items-carrito">
-            </div>
+        <div id="contenedor-items-carrito"></div>
 
         <div style="text-align: right; margin-top: 20px; font-size: 1.5rem;">
             <strong>Total a pagar: $<span id="total-pagar">0</span></strong>
         </div>
 
         <div style="text-align: right; margin-top: 20px;">
-            <button onclick="finalizarCompra()" style="background-color: #28a745; color: white; padding: 15px 30px; border: none; font-size: 1.2rem; cursor: pointer; border-radius: 5px;">
+            <button type="button" onclick="abrirModalConfirmacion()" style="background-color: #28a745; color: white; padding: 15px 30px; border: none; font-size: 1.2rem; cursor: pointer; border-radius: 5px; font-weight: bold;">
                 Finalizar Compra
             </button>
         </div>
     </main>
 
+    <div id="modal-confirmacion" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 9999; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: #ffffff; padding: 30px 40px; border-radius: 8px; max-width: 420px; width: 90%; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.5);">
+            <h2 style="margin-top: 0; color: #28a745;">⚠️ Confirmar Compra</h2>
+            <p style="font-size: 1.1rem; margin: 20px 0; line-height: 1.5;">¿Estás seguro de que deseas procesar el pago y generar el comprobante de esta compra?</p>
+            
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+                <button type="button" onclick="cerrarModalConfirmacion()" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold;">Cancelar</button>
+                <button type="button" onclick="ejecutarCompra()" style="background: #28a745; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold;">Sí, confirmar</button>
+            </div>
+        </div>
+    </div>
+
     <%- include("./partials/footer") %>
 
     <script>
-        const carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
         const contenedor = document.getElementById("contenedor-items-carrito");
         const spanTotal = document.getElementById("total-pagar");
 
-
         function renderizarCarrito() {
-
             let carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
-            const contenedor = document.getElementById("contenedor-items-carrito");
-            const spanTotal = document.getElementById("total-pagar");
-
             contenedor.innerHTML = "";
             let total = 0;
 
             if (carrito.length === 0) {
-                contenedor.innerHTML = "<h3 style='text-align: center; color: #666;'>Tu carrito esta vacio!</h3>";
+                contenedor.innerHTML = "<h3 style='text-align: center; color: #666;'>Tu carrito está vacío!</h3>";
                 spanTotal.innerText = "0";
                 return;
             }
@@ -60,14 +65,14 @@
                         </div>
                         
                         <div style="display: flex; align-items: center; gap: 10px; margin-right: 20px;">
-                            <button onclick="cambiarCantidad(${index}, -1)" style="padding: 5px 10px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; border-radius: 4px;">-</button>
+                            <button type="button" onclick="cambiarCantidad(${index}, -1)" style="padding: 5px 10px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; border-radius: 4px;">-</button>
                             <span style="font-size: 1.2rem; font-weight: bold; min-width: 20px; text-align: center;">${producto.cantidad}</span>
-                            <button onclick="cambiarCantidad(${index}, 1)" style="padding: 5px 10px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; border-radius: 4px;">+</button>
+                            <button type="button" onclick="cambiarCantidad(${index}, 1)" style="padding: 5px 10px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; border-radius: 4px;">+</button>
                         </div>
 
                         <div style="display: flex; align-items: center; gap: 15px; min-width: 150px; justify-content: flex-end;">
                             <strong>$${producto.precio * producto.cantidad}</strong>
-                            <button onclick="eliminarItem(${index})" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                            <button type="button" onclick="eliminarItem(${index})" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
                                 🗑️ Quitar
                             </button>
                         </div>
@@ -80,7 +85,6 @@
 
         function cambiarCantidad(index, operacion) {
             let carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
-            
             carrito[index].cantidad += operacion;
 
             if (carrito[index].cantidad <= 0) {
@@ -97,20 +101,35 @@
         }
 
         function eliminarItem(index) {
+            let carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
             carrito.splice(index, 1);
             localStorage.setItem("carritoHardzone", JSON.stringify(carrito)); 
             renderizarCarrito();
         }
 
-        async function finalizarCompra() {
+
+        function abrirModalConfirmacion() {
+            let carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
             if(carrito.length === 0) {
-                alert("No tenés productos para comprar.");
+                alert("No tenés productos en el carrito para comprar.");
                 return;
             }
+            document.getElementById("modal-confirmacion").style.display = "flex";
+        }
 
+        function cerrarModalConfirmacion() {
+            document.getElementById("modal-confirmacion").style.display = "none";
+        }
+
+        function ejecutarCompra() {
+            cerrarModalConfirmacion(); 
+            finalizarCompra(); 
+        }
+
+        async function finalizarCompra() {
+            let carrito = JSON.parse(localStorage.getItem("carritoHardzone")) || [];
             let total = 0;
             carrito.forEach(p => total += (p.precio * p.cantidad));
-
             let nombreCliente = localStorage.getItem('nombreInvitado') || 'Invitado';
 
             try {
