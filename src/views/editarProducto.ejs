@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <%- include("./partials/header", { mostrarNav: true }) %>
+    <%- include("./partials/header", { categorias: false, carrito: false, ventas: true, dashboard: true, logout: true }) %>
     <main class="container">
         <h1>Modificar Producto: <%= producto.nombre %></h1>
         

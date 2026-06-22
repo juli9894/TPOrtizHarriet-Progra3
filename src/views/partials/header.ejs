@@ -3,9 +3,10 @@
         let confirmacion = confirm("¿Querés salir y cambiar de usuario? Esto vaciará tu carrito de compras actual.");
         
         if (confirmacion){
+            
             localStorage.removeItem("nombreInvitado");
             localStorage.removeItem("carritoHardzone");
-            window.location.href = "/";
+            window.location.href = "/logout";
         }
     }
 </script>
@@ -22,17 +23,26 @@
             <h2 class="logo">💻 HardZone Autoservicio</h2>
         </a>
 
-        <% if (mostrarNav) { %>
-            <nav>
-                <a href="/categorias">Categorias</a>
-                <a href="/carrito">Carrito</a>
-                <% if(usuario){ %>
-                    <a href="/admin/ventas">Ventas</a>
-                    <a href="/admin/dashboard">Panel</a>
-                    <a href="/logout">Cerrar sesión</a>
-                <% } %>
-            </nav>
-        <% } %>
+        <nav>
+            <% if(categorias) { %>
+                <a href="/categorias" class="nav-btn" style="background: #3186d1;">Atras</a>
+            <% } %>
 
+            <% if(carrito) { %>
+                <a href="/carrito" class="nav-btn" style="background: #28a745;">Finalizar</a>
+            <% } %>
+
+            <% if(ventas) { %>
+                <a href="/admin/ventas" class="nav-btn" style="background: #aaa;">Ventas</a>
+            <% } %>
+
+            <% if(dashboard) { %>
+                <a href="/admin/dashboard" class="nav-btn" style="background: #aaa;">Panel</a>
+            <% } %>
+
+            <% if(logout) { %>
+                <a href="/logout" class="nav-btn" style="background: #e23e3e;">Cerrar sesión</a>
+            <% } %>
+        </nav>
     </div>
 </header>

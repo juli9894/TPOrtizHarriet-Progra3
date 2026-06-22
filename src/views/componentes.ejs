@@ -7,35 +7,36 @@
     <title>Catálogo de Componentes</title>
 </head>
 <body>
-    <%- include("./partials/header", { mostrarNav: true, admin: false }) %>
-        <h1 style="text-align: center;">Catálogo de Componentes</h1>
+    <%- include("./partials/header", { categorias: true, carrito: true, ventas: false, dashboard: false, logout: false }) %>
 
-        <div class="catalogo-container">
-        <% if (listaProductos && listaProductos.length > 0) { %>
-            
-            <% listaProductos.forEach(producto => { %>
-                <div class="producto-card">
+    <h1 style="text-align: center;">Catálogo de Componentes</h1>
 
-                    <a href="/producto/<%= producto.id %>" style="text-decoration: none; color: inherit; display: block; text-align: center;">
-                        <img src="/img/productos/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>" style="transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <h3 onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='inherit'" style="transition: color 0.2s ease;"><%= producto.nombre %></h3>
-                    </a>
+    <div class="catalogo-container">
+    <% if (listaProductos && listaProductos.length > 0) { %>
+        
+        <% listaProductos.forEach(producto => { %>
+            <div class="producto-card">
 
-                    <p class="precio">$ <%= producto.precio %></p>
-                    <p class="descripcion"><%= producto.descripcion %></p>
+                <a href="/producto/<%= producto.id %>" style="text-decoration: none; color: inherit; display: block; text-align: center;">
+                    <img src="/img/productos/<%= producto.imagen %>" alt="Imagen de <%= producto.nombre %>" style="transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <h3 onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='inherit'" style="transition: color 0.2s ease;"><%= producto.nombre %></h3>
+                </a>
 
-                    <button type="button" class="btn-comprar" onclick="abrirModalCantidad('<%= producto.id %>', '<%= producto.nombre %>', '<%= producto.precio %>')">
-                        🛒 Agregar al carrito
-                    </button>
+                <p class="precio">$ <%= producto.precio %></p>
+                <p class="descripcion"><%= producto.descripcion %></p>
 
-                </div>
-            <% }) %>
+                <button type="button" class="btn-comprar" onclick="abrirModalCantidad('<%= producto.id %>', '<%= producto.nombre %>', '<%= producto.precio %>')">
+                    🛒 Agregar al carrito
+                </button>
 
-        <% } else { %>
-            <div style="text-align: center; grid-column: 1 / -1; padding: 40px;">
-                <h2>No hay componentes disponibles en este momento.</h2>
             </div>
-        <% } %>
+        <% }) %>
+
+    <% } else { %>
+        <div style="text-align: center; grid-column: 1 / -1; padding: 40px;">
+            <h2>No hay componentes disponibles en este momento.</h2>
+        </div>
+    <% } %>
 
     </div>
     <%- include("./partials/footer") %>

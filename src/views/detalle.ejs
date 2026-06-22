@@ -7,8 +7,8 @@
     <title>Detalle de Producto - HardZone</title>
 </head>
 <body>
-    <%- include("./partials/header", { mostrarNav: true, admin: false }) %>
-    
+    <%- include("./partials/header", { categorias: true, carrito: true, ventas: false, dashboard: false, logout: false }) %>
+   
     <main class="container" style="max-width: 900px; display: flex; flex-wrap: wrap; gap: 40px; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 40px;">
         
         <% if (producto) { %>

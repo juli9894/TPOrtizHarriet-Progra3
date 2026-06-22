@@ -176,12 +176,24 @@ button {
     z-index: 999;
 }
 
+.nav-btn {
+    border: none; 
+    padding: 12px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    flex-grow: 1; 
+    font-weight: bold;
+}
+
 #segundaBarra nav {
     display: flex;
     gap: 20px;
 }
+#segundaBarra a {
+    color: white;
+}
 
-#segundaBarra nav a:hover {
+#segundaBarra a:hover {
     color: #00FF00;
 }
 
