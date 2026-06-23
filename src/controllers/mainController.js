@@ -13,23 +13,51 @@ const mainController = {
 
     perifericos: async (req, res) => {
         try {
-            const productosActivos = await Producto.findAll({
-                where: { categoria: "Periferico", activo: true }
+            const limit = 6; 
+            const page = req.query.page ? parseInt(req.query.page) : 1;
+            const offset = (page - 1) * limit;
+
+            const { count, rows } = await Producto.findAndCountAll({
+                where: { categoria: "Periferico", activo: true },
+                limit: limit,
+                offset: offset
             });
-            return res.render("perifericos", { listaProductos: productosActivos });
+
+            const totalPages = Math.ceil(count / limit);
+
+            return res.render("perifericos", { 
+                listaProductos: rows,
+                currentPage: page,
+                totalPages: totalPages,
+                categoriaActual: "perifericos" 
+            });
         } catch (error) {
-            console.error("Error al buscar en la base de datos:", error);
+            console.error("Error al buscar periféricos:", error);
         }
     },
 
     componentes: async (req, res) => {
         try {
-            const productosActivos = await Producto.findAll({
-                where: { categoria: "Componente", activo: true }
+            const limit = 6;
+            const page = req.query.page ? parseInt(req.query.page) : 1;
+            const offset = (page - 1) * limit;
+
+            const { count, rows } = await Producto.findAndCountAll({
+                where: { categoria: "Componente", activo: true },
+                limit: limit,
+                offset: offset
             });
-            return res.render("componentes", { listaProductos: productosActivos });
+
+            const totalPages = Math.ceil(count / limit);
+
+            return res.render("componentes", { 
+                listaProductos: rows,
+                currentPage: page,
+                totalPages: totalPages,
+                categoriaActual: "componentes"
+            });
         } catch (error) {
-            console.error("Error al buscar en la base de datos:", error);
+            console.error("Error al buscar componentes:", error);
             return res.send("Ocurrió un error al cargar el catálogo.");
         }
     },

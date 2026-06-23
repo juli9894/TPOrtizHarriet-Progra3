@@ -491,3 +491,39 @@ body.dark-theme .producto-card .descripcion {
     color: #b3b3b3 !important;
     line-height: 1.4;
 }
+
+.paginacion-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 40px 0 20px 0;
+}
+
+.page-btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #333333 !important;
+    border: 1px solid #cccccc;
+    transition: all 0.2s ease;
+}
+
+.page-btn.active {
+    background-color: #28a745 !important;
+    color: #ffffff !important;
+    border-color: #28a745 !important;
+}
+
+body.dark-theme .page-btn:not(.active) {
+    background-color: #242424 !important;
+    color: #ffffff !important;
+    border-color: #444444 !important;
+}
+
+.page-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
