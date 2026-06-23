@@ -133,28 +133,22 @@
             let nombreCliente = localStorage.getItem('nombreInvitado') || 'Invitado';
 
             try {
-                const response = await fetch("/ticket", {
+                const response = await fetch("/procesar-compra", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ carrito: carrito, total: total, cliente: nombreCliente})
+                    body: JSON.stringify({ carrito, total, cliente: nombreCliente })
                 });
 
-                if (response.ok) {
-                    const blob = await response.blob();
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement("a");
-                    a.href = url;
-                    a.download = "Ticket_HardZone.pdf";
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
-                    window.URL.revokeObjectURL(url);
+                const data = await response.json();
 
-                    alert("¡Compra finalizada! Tu comprobante se está descargando.");
+                if (data.success) {
+                    // 1. Destruimos el carrito local porque ya se vendió
                     localStorage.removeItem("carritoHardzone"); 
-                    window.location.href = "/"; 
+                    
+                    // 2. Viajamos a la nueva pantalla de ticket HTML
+                    window.location.href = `/comprobante/${data.idVenta}`; 
                 } else {
-                    alert("Ocurrió un error en el servidor al generar el ticket.");
+                    alert("Ocurrió un error en el servidor al registrar la venta.");
                 }
             } catch (error) {
                 console.error("Error al comunicarse con el servidor:", error);

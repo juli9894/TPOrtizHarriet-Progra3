@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Comprobante de Compra #<%= venta.id %></title>
+</head>
+<body>
+    <%- include("./partials/header", { login: true, categorias: true, carrito: false, ventas: false, dashboard: false, logout: false }) %>
+
+    <main class="catalogo-container" style="max-width: 700px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+        <div style="text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 20px; margin-bottom: 20px;">
+            <span style="font-size: 3rem;">🎉</span>
+            <h1 style="color: #28a745; margin: 10px 0 5px 0;">¡Compra Exitosa!</h1>
+            <p style="color: #666; font-size: 1.1rem; margin: 0;">Felicidades <strong><%= venta.cliente %></strong>, tu pedido ha sido procesado.</p>
+            <span style="display: inline-block; background: #eee; color: #333; padding: 4px 12px; border-radius: 15px; font-size: 0.9rem; font-weight: bold; margin-top: 10px;">
+                Ticket N° <%= venta.id %>
+            </span>
+        </div>
+
+        <h3 style="margin-bottom: 15px;">Resumen de los artículos:</h3>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+            <thead>
+                <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6;">
+                    <th style="padding: 12px; text-align: left;">Producto</th>
+                    <th style="padding: 12px; text-align: center;">Cant.</th>
+                    <th style="padding: 12px; text-align: right;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% productos.forEach(p => { %>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 12px;"><%= p.nombre %></td>
+                        <td style="padding: 12px; text-align: center; font-weight: bold;"><%= p.cantidad %></td>
+                        <td style="padding: 12px; text-align: right;">$<%= p.precio * p.cantidad %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <div style="text-align: right; font-size: 1.6rem; margin-bottom: 40px; color: #28a745;">
+            Total pagado: <strong>$<%= venta.precio_final %></strong>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="/comprobante/pdf/<%= venta.id %>" style="background-color: #3186d1; color: white; text-decoration: none; padding: 14px 28px; border-radius: 6px; font-weight: bold; font-size: 1.1rem; display: inline-block; box-shadow: 0 4px 10px rgba(49, 134, 209, 0.3);">
+                📄 Descargar Comprobante PDF
+            </a>
+            
+            <a href="/" style="background-color: #28a745; color: white; text-decoration: none; padding: 14px 28px; border-radius: 6px; font-weight: bold; font-size: 1.1rem; display: inline-block; box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);">
+                🛒 Volver a iniciar una compra
+            </a>
+        </div>
+    </main>
+
+    <%- include("./partials/footer") %>
+</body>
+</html>
