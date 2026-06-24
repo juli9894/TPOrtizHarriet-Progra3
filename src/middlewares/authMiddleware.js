@@ -8,8 +8,12 @@ function authMiddleware(req, res, next) {
     }
 
     try {
-        jwt.verify(token, process.env.PASSWORD);
+        const usuarioDecodificado = jwt.verify(token, process.env.PASSWORD);
         
+        if (usuarioDecodificado.rol !== 'admin') {
+            return res.redirect('/');
+        }
+
         next();
     } catch (error) {
         return res.redirect('/login');
