@@ -1,9 +1,9 @@
 const express = require("express");
 const path = require("path"); 
 const app = express();
-const cookieParser = require("cookie-parser"); //npm install jsonwebtoken
-const jwt = require("jsonwebtoken"); //npm install cookie-parser | sirve para acceder facilmente a información
-require("dotenv").config(); //npm install dotenv
+const cookieParser = require("cookie-parser"); //sirve para leer facilmente las cookies
+const jwt = require("jsonwebtoken"); 
+require("dotenv").config(); 
 
 const PORT = process.env.PORT;
 
